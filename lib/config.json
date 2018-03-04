@@ -1,0 +1,31 @@
+{
+    "providers" : {
+        "google" : {
+            "enabled" : true,
+            "key" : "<your api key here>",
+            "cx" : "<your cx key here>",
+            "terms" : ["dinosaurs", "OR", "monsters"],
+            "imgSize" : "huge"
+
+        },
+        "bing" : {
+            "enabled" : true,
+            "key" : "<your api key here>",            
+            "terms" : [ "nature" ],
+            "width" : 1920,
+            "height" : 1080
+    
+        },
+        "pixabay" : {
+            "enabled" : true,
+            "key" : "<your api key here>",
+            "terms" : ["mountains", "OR", "forest", "OR", "ocean"],
+            "width" : 1920,
+            "height" : 1080
+        },
+        "flickr" : {
+            "enabled" : false,
+            "terms" : ["mountains"]
+        }
+    }
+}
