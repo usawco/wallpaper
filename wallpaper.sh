@@ -6,7 +6,7 @@ echo $(date)
 echo 'removing old image'
 echo 'Getting list of images'
 
-NODE_DEBUG=$NODE_DEBUG ${NODE_HOME}/bin/node /home/user/dev/git/wallpaper/lib/index.js
+NODE_DEBUG=$NODE_DEBUG ${NODE_HOME}/bin/node $(dirname)/lib/index.js
 echo 'Downloading ' $imageLink
 if [ -f /tmp/wallpaper.json ] 
 then
