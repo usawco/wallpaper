@@ -1,0 +1,17 @@
+{
+  "name": "wallpaper",
+  "version": "1.0.0",
+  "description": "Change my wallpaper",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "lint": "eslint --config .eslintrc.json --ignore-path .eslintignore test lib"
+  },
+  "author": "usawco",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "eslint": "^4.18.0"
+  }
+}
