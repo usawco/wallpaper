@@ -1,7 +1,7 @@
 {
   "name": "wallpaper",
   "version": "1.0.0",
-  "description": "Change my wallpaper",
+  "description": "Random generator to change my wallpaper",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -10,6 +10,14 @@
     "lint": "eslint --config .eslintrc.json --ignore-path .eslintignore test lib"
   },
   "author": "usawco",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/usawco/wallpaper.git"
+  },
+  "keywords" : [
+    "eye-candy",
+    "wallpaper"
+  ],
   "license": "Apache-2.0",
   "devDependencies": {
     "eslint": "^4.18.0"
