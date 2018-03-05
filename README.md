@@ -2,12 +2,12 @@
 ![alt text](doc/images/sample-screenshot0.png "desktop-eye-candy")
 
 # Installation
-This program currently only supports Linux platforms.  It has only been tested with Ubuntu thus far.
+This program currently only supports Linux platforms.  It has only been tested with Ubuntu 14.0.4 thus far.
 
 ## Dependencies
 Ensure the following dependencies are installed:
 ```
-$ sudo apt-get install jq image-magick nitrogen wget
+$ sudo apt-get install jq imagemagick nitrogen wget
 ```
 * jq - JSON parser
 * image-magic - Using 'convert' to inject text into image
