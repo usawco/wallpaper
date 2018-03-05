@@ -2,7 +2,7 @@
 ![alt text](doc/images/sample-screenshot0.png "desktop-eye-candy")
 
 # Installation
-This program currently only supports Linux platforms.  It has only been tested with Ubuntu 14.0.4 thus far.
+This program currently only supports Linux platforms.  It has only been tested with Ubuntu 14.04 thus far.
 
 ## Dependencies
 Ensure the following dependencies are installed:
