@@ -1,14 +1,18 @@
 {
   "name": "desktop-eye-candy",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "Random generator to change my wallpaper",
-  "main": "index.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "lint": "eslint --config .eslintrc.json --ignore-path .eslintignore test lib"
   },
+  "bin": {
+    "wallpaper": "./bin/wallpaper.sh"
+  },
+  "preferGlobal": true,
   "author": "usawco",
   "repository": {
     "type": "git",

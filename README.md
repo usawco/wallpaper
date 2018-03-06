@@ -5,8 +5,9 @@
 Each time this program executes, it will select a random image from one of its configured providers to use as a desktop background. When launched from a keyboard shortcut, it provides a very simple yet effective method for changing your wallpaper.
 
 ## Download from npm Registry
+Perform a  global install, so 'wallpaper' is installed into your $NODE_HOME/bin directory.
 ```
-npm install desktop-eye-candy
+npm install -g desktop-eye-candy
 ```
 ## Create API keys
 Bing, Google Custom Search, and Pixabay require an authorized API key. Moreover, for Pixabay, send an email requesting access to high-resolution images here. The Flickr provider requires no API key; however, it is disabled by default.
@@ -15,7 +16,7 @@ Bing, Google Custom Search, and Pixabay require an authorized API key. Moreover,
 Configure one of the supported providers by editing 'lib/config.json'. Minimally, you will want to install API keys and search terms.
 
 ## Invoke Shell Script
-Run the 'wallpaper.sh' script to randomly select a desktop image from one of the configured providers.
+Run the globally installed 'wallpaper' script to randomly select a desktop image from one of the configured providers.
 
 # Testing Details
 The following platforms have been tested thus far.
@@ -127,7 +128,7 @@ Add this program to a keyboard shortcut for maximum ease of use. I suggest using
 
 e.g. I've created a bash profile called 'login' in the example below that sets the custom green foreground color.
 ```
- $ gnome-terminal --window-with-profile=login -e /home/user/dev/git/usawco/wallpaper/wallpaper.sh
+ $ gnome-terminal --window-with-profile=login -e /yourPathToNodeHome/bin/wallpaper
 ```
 Tip: Make sure NODE_HOME environment variable is defined.
 ![alt text](doc/images/sample-screenshot2.png "keyboard shortcut")
@@ -165,6 +166,12 @@ For example, here is the bing entry.  You would add a new entry with for your ha
     
         },
 ```
+# Revision history
+| when            | what  |
+| ------------- | :------|
+| 1.0.7  | Initial release   |
+| 1.1.0  | Support global module installation |
+
 # TODO
 1. unit tests with mocking support
 2. jsdoc
