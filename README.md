@@ -170,7 +170,7 @@ For example, here is the bing entry.  You would add a new entry with for your ha
 | when            | what  |
 | ------------- | :------|
 | 1.0.7  | Initial release   |
-| 1.1.0  | Support global module installation |
+| 1.1.1  | Support global module installation |
 
 # TODO
 1. unit tests with mocking support

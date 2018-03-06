@@ -2,15 +2,15 @@
     "providers" : {
         "google" : {
             "enabled" : true,
-            "key" : "<your api key here>",
-            "cx" : "<your cx key here>",
+            "key" : "<your API key>",
+            "cx" : "<your cx key>",
             "terms" : ["dinosaurs", "OR", "monsters"],
             "imgSize" : "huge"
 
         },
         "bing" : {
             "enabled" : true,
-            "key" : "<your api key here>",            
+            "key" : "<your API key>",            
             "terms" : [ "nature" ],
             "width" : 1920,
             "height" : 1080
@@ -18,7 +18,7 @@
         },
         "pixabay" : {
             "enabled" : true,
-            "key" : "<your api key here>",
+            "key" : "<your API key>",
             "terms" : ["mountains", "OR", "forest", "OR", "ocean"],
             "width" : 1920,
             "height" : 1080

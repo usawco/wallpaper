@@ -1,6 +1,6 @@
 {
   "name": "desktop-eye-candy",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Random generator to change my wallpaper",
   "main": "lib/index.js",
   "directories": {
