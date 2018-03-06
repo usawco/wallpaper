@@ -2,7 +2,29 @@
 ![alt text](doc/images/sample-screenshot0.png "desktop-eye-candy")
 
 # Installation
-This program currently only supports Linux platforms.  It has only been tested with Ubuntu 14.04 thus far.
+Each time this program executes, it will select a random image from one of its configured providers to use as a desktop background. When launched from a keyboard shortcut, it provides a very simple yet effective method for changing your wallpaper.
+
+## Download from npm Registry
+```
+npm install desktop-eye-candy
+```
+## Create API keys
+Bing, Google Custom Search, and Pixabay require an authorized API key. Moreover, for Pixabay, send an email requesting access to high-resolution images here. The Flickr provider requires no API key; however, it is disabled by default.
+
+## Configure
+Configure one of the supported providers by editing 'lib/config.json'. Minimally, you will want to install API keys and search terms.
+
+## Invoke Shell Script
+Run the 'wallpaper.sh' script to randomly select a desktop image from one of the configured providers.
+
+# Testing Details
+The following platforms have been tested thus far.
+
+| OS            | Notes  |
+| ------------- | :------|
+| Ubuntu 14.04  | None   |
+| Ubuntu 16.04  | After installation and configuration, logout and log back in if using keyboard shortcut|
+
 
 ## Dependencies
 Ensure the following dependencies are installed:
@@ -20,6 +42,17 @@ $ sudo apt-get install jq imagemagick nitrogen wget
 ```
 export NODE_HOME=/path/to/Node.js
 ```
+Note: The simplest approach is to add NODE_HOME to /etc/environment.
+
+e.g. 
+/etc/environment
+```
+NODE_HOME=/home/user/dev/node-v9.7.1-linux-x64
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+user@zfs-VirtualBox:~/dev/git/usawco$ 
+
+```
+
 
 # Usage Notes
 The same three files are created in the /tmp directory each time the shell script (wallpaper.sh) is run.
@@ -46,7 +79,7 @@ Uncomment these lines at the top of wallpaper.sh to produce a shell script log
 #!/bin/bash
 
 # Uncomment to dump to a log file
-# exec > /tmp/wallpaper.log 2>&1
+#exec > /tmp/wallpaper.log 2>&1
 #set -x
 
 echo NODE_HOME: $NODE_HOME
@@ -89,7 +122,7 @@ $
 ```
 
 # Keyboard Shortcut
-Add this program to a keyboard shortcut for maximum easy of use. I suggest using gnome-terminal for the terminal popup, so you can monitor its progress. :)
+Add this program to a keyboard shortcut for maximum ease of use. I suggest using gnome-terminal for the terminal popup, so you can monitor its progress since some images may take a few seconds to download.
 ![alt text](doc/images/sample-screenshot1.png "gnome-terminal")
 
 e.g. I've created a bash profile called 'login' in the example below that sets the custom green foreground color.
