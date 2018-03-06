@@ -1,6 +1,8 @@
 
 ![alt text](doc/images/sample-screenshot0.png "desktop-eye-candy")
 
+A program for setting randomized background wallpapers in a Linux desktop.
+
 # Installation
 Each time this program executes, it will select a random image from one of its configured providers to use as a desktop background. When launched from a keyboard shortcut, it provides a very simple yet effective method for changing your wallpaper.
 
