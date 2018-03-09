@@ -12,7 +12,7 @@ Perform a  global install, so 'wallpaper' is installed into your $NODE_HOME/bin 
 npm install -g desktop-eye-candy
 ```
 ## Create API keys
-Bing, Google Custom Search, and Pixabay require an authorized API key. Moreover, for Pixabay, send an email requesting access to high-resolution images here. The Flickr provider requires no API key; however, it is disabled by default.
+Most of the supported providers ( [Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/web/), [Google Custom Search](https://developers.google.com/custom-search/json-api/v1/introduction#identify_your_application_to_google_with_api_key), and [Pixabay](https://pixabay.com/api/docs/) ) require an authorized API key. Moreover, for Pixabay, one must send an email requesting access to high-resolution images as discussed in their API docs. The Flickr provider requires no API key; however, it is disabled by default.
 
 ## Configure
 Configure one of the supported providers by editing 'lib/config.json'. Minimally, you will want to install API keys and search terms.
@@ -26,7 +26,8 @@ The following platforms have been tested thus far.
 | OS            | Notes  |
 | ------------- | :------|
 | Ubuntu 14.04  | None   |
-| Ubuntu 16.04  | After installation and configuration, logout and log back in if using keyboard shortcut|
+| Ubuntu 16.04  | After installation and configuration, logout and log back in if using keyboard shortcut. Convert-injected text is not rendered when nitrogen sets desktop.|
+| Ubuntu 17.10  | None   |
 
 
 ## Dependencies
@@ -173,8 +174,11 @@ For example, here is the bing entry.  You would add a new entry with for your ha
 | ------------- | :------|
 | 1.0.7  | Initial release   |
 | 1.1.1  | Support global module installation |
+| 1.1.3  | update 17.10 support |
 
 # TODO
 1. unit tests with mocking support
 2. jsdoc
 3. consider a GUI config
+4. Pop a 'tile preview' panel containing a subset of the random entries. User clicks on a tile to select it. 
+5. Save 'favorites' to a store for later retrieval.
