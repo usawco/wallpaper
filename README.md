@@ -6,7 +6,7 @@ A program for setting randomized background wallpapers in a Linux desktop.
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 1.2.0  | 'favorites' provider introduced, source code cleanup (eslint) |
+| 1.2.2  | 'favorites' provider introduced, source code cleanup (eslint) |
 | 1.1.3  | update 17.10 support |
 | 1.1.1  | Support global module installation |
 | 1.0.7  | Initial release |
