@@ -9,15 +9,15 @@
         },
         "google" : {
             "enabled" : false,
-            "key" : "AIzaSyC7OkefaCMSzD0AckGY3AR98w03OexJIfk",
-            "cx" : "011234693644851488476:l3qriqihqgk",
+            "key" : "<YOUR API KEY>",
+            "cx" : "<YOUR KEY>",
             "terms" : ["dinosaurs", "OR", "monsters"],
             "imgSize" : "huge"
 
         },
         "bing" : {
             "enabled" : false,
-            "key" : "ff9da06870544e8a91065612f266fa4e",            
+            "key" : "<YOUR API KEY>",            
             "terms" : [ "nature" ],
             "width" : 1920,
             "height" : 1080
@@ -25,7 +25,7 @@
         },
         "pixabay" : {
             "enabled" : false,
-            "key" : "8096402-415e3429b551a74d7eba123ad",
+            "key" : "<YOUR API KEY>",
             "terms" : ["mountains", "OR", "forest", "OR", "ocean"],
             "width" : 1920,
             "height" : 1080
