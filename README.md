@@ -6,13 +6,17 @@ A program for setting randomized background wallpapers in a Linux desktop.
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 1.2.2  | 'favorites' provider introduced, source code cleanup (eslint) |
+| 1.2.3  | 'favorites' provider introduced, source code cleanup (eslint) |
 | 1.1.3  | update 17.10 support |
 | 1.1.1  | Support global module installation |
 | 1.0.7  | Initial release |
 
+FIX local image read from 'favorites folder!' 
+FIX my ability to test locally before pushing to npm
+Update README to reflect local handler (in install area)
+
 # Coming soon
-* don't overwrite prior config.json content
+* don't overwrite prior config.json content AND UPDATE the README to indicate this
 * API to save current wallpaper to favorites provider
 * detect resolution at install-time
 * flickr hi-res api
