@@ -1,24 +1,31 @@
 {
     "providers" : {
+        "favorites" : {
+            "enabled" : true,            
+            "desc" :  "List of favorite images",
+            "feeds" : [
+                "favorites/"
+            ]            
+        },
         "google" : {
-            "enabled" : true,
-            "key" : "<your API key>",
-            "cx" : "<your cx key>",
+            "enabled" : false,
+            "key" : "AIzaSyC7OkefaCMSzD0AckGY3AR98w03OexJIfk",
+            "cx" : "011234693644851488476:l3qriqihqgk",
             "terms" : ["dinosaurs", "OR", "monsters"],
             "imgSize" : "huge"
 
         },
         "bing" : {
-            "enabled" : true,
-            "key" : "<your API key>",            
+            "enabled" : false,
+            "key" : "ff9da06870544e8a91065612f266fa4e",            
             "terms" : [ "nature" ],
             "width" : 1920,
             "height" : 1080
     
         },
         "pixabay" : {
-            "enabled" : true,
-            "key" : "<your API key>",
+            "enabled" : false,
+            "key" : "8096402-415e3429b551a74d7eba123ad",
             "terms" : ["mountains", "OR", "forest", "OR", "ocean"],
             "width" : 1920,
             "height" : 1080

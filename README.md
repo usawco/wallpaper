@@ -3,6 +3,20 @@
 
 A program for setting randomized background wallpapers in a Linux desktop.
 
+# Revision history
+| when          | what   |
+| ------------- | :------|
+| 1.2.0  | 'favorites' provider introduced, source code cleanup (eslint) |
+| 1.1.3  | update 17.10 support |
+| 1.1.1  | Support global module installation |
+| 1.0.7  | Initial release |
+
+# Coming soon
+* don't overwrite prior config.json content
+* API to save current wallpaper to favorites provider
+* detect resolution at install-time
+* flickr hi-res api
+
 # Installation
 Each time this program executes, it will select a random image from one of its configured providers to use as a desktop background. When launched from a keyboard shortcut, it provides a very simple yet effective method for changing your wallpaper.
 
@@ -169,12 +183,6 @@ For example, here is the bing entry.  You would add a new entry with for your ha
     
         },
 ```
-# Revision history
-| when            | what  |
-| ------------- | :------|
-| 1.0.7  | Initial release   |
-| 1.1.1  | Support global module installation |
-| 1.1.3  | update 17.10 support |
 
 # TODO
 1. unit tests with mocking support
