@@ -25,7 +25,7 @@ try {
     } else {
         objJson = {};
     }
-    _util.infoLog("Copying new elements from package's config.js into ${configJsonPath}");
+    _util.infoLog(`Copying new elements from package's config.js into ${configJsonPath}`);
     deepCopy( objJs, objJson );
     fs.writeFileSync( configJsonPath, JSON.stringify(objJson, null, 4));
 
