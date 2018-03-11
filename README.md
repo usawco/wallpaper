@@ -16,7 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 1.3.10  | An existing configuration is no longer overwritten. config.json moves to ~/.desktop-eye-candy/config.json | 
+| 1.3.11  | An existing configuration is no longer overwritten. config.json moves to ~/.desktop-eye-candy/config.json | 
 | 1.2.3  | A 'favorites' provider introduced, source code cleanup (eslint) |
 | 1.1.3  | Update README for 17.10 support |
 | 1.1.1  | Support global module installation |
@@ -29,11 +29,13 @@ The following providers are supported:
 
 # Installation
 
-## When updating an existing pre-1.3.8 installation for the first time. ( i.e. npm -g update desktop-eye-candy), the existing configuration elements in your lib/config.json file are no longer overwritten. Each time an update is applied, any new elements introduced into the source template lib/config.js file are added to your configuration. Elements are never deleted or overwritten.
+## When updating an existing pre-1.3.8 installation for the first time. 
 
-This manual step is only required one time.
+( i.e. npm -g update desktop-eye-candy)
 
-Copy your existing config.json file to ~/desktop-eye-candy/config.json before running npm -g update desktop-eye-candy
+The existing configuration elements are no longer overwritten. Each time an update is applied, any new elements introduced into the source template lib/config.js file are added to your configuration (~/desktop-eye-candy/config.json) . Elements are never deleted or overwritten.
+
+Copy your existing config.json file to ~/desktop-eye-candy/config.json before running npm -g update desktop-eye-candy. This manual step is only required one time since future updates will look for the configuration file in its new location.
 
 
 ## Download from npm Registry
