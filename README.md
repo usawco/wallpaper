@@ -16,7 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 1.3.9  | An existing configuration is no longer overwritten. config.json moves to ~/.desktop-eye-candy/config.json | 
+| 1.3.10  | An existing configuration is no longer overwritten. config.json moves to ~/.desktop-eye-candy/config.json | 
 | 1.2.3  | A 'favorites' provider introduced, source code cleanup (eslint) |
 | 1.1.3  | Update README for 17.10 support |
 | 1.1.1  | Support global module installation |

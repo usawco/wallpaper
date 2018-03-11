@@ -9,13 +9,11 @@ _util.infoLog('Executing post installation script');
 var configJsonPath;
 try {
     let configJsPath = path.resolve( __dirname, '../lib/config.js');
-    let homedir = os.homedir();    
-    let configDirPath = path.resolve( homedir,'.desktop-eye-candy');    
-    if ( !fs.existsSync(configDirPath)) {        
-        _util.infoLog(`Creating configuration directory in ${configDirPath}`);        
-        fs.mkdirSync(configDirPath);
+    if ( !fs.existsSync(_util.CONFIG_DIR)) {        
+        _util.infoLog(`Creating configuration directory in ${_util.CONFIG_DIR}`);        
+        fs.mkdirSync(_util.CONFIG_DIR);
     }
-    configJsonPath = path.resolve( configDirPath, _util.CONFIG_FILE);    
+    configJsonPath = path.resolve( _util.CONFIG_DIR, _util.CONFIG_FILE);    
 
     let objJs = require( configJsPath );
     let configExists = fs.existsSync(configJsonPath);
