@@ -20,6 +20,8 @@ try {
     if ( configExists) {
         _util.infoLog(`Backing up ${configPath} to ${tmpPath} before update`);
         fs.copyFileSync( configPath, tmpPath);
+    } else {
+        _util.infoLog(`Installing ${configPath} for the first time.`);
     }
 } catch (e) {
     _util.infoLog(`Warning, unable to backup existing ${configPath} before update`);
