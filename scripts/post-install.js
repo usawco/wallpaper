@@ -16,21 +16,22 @@ try {
 
     let tmpExists = fs.existsSync(tmpPath);
     if ( tmpExists) {
-        _util.infoLog(`Restoring archived ${configJsonPath} to lib/`);
+        _util.infoLog(`Restoring archived ${tmpPath} to ${configJsonPath}`);
         fs.copyFileSync( tmpPath, configJsonPath);
         fs.unlinkSync( tmpPath );
-    }
+    } 
 
+    let objJs = require( configJsPath );
     let configExists = fs.existsSync(configJsonPath);
-    if ( configExists) {
-        let objJs = require( configJsPath );
-        let objJson = require( configJsonPath );        
-        if ( objJson != null) {
-            _util.infoLog("Copying any new elements from config.js into existing config.json");
-            deepCopy( objJs, objJson );
-            fs.writeFileSync( configJsonPath, JSON.stringify(objJson, null, 4));
-        }
+    let objJson;
+    if ( configExists) {        
+        objJson = require( configJsonPath );        
+    } else {
+        objJson = {};
     }
+    _util.infoLog("Copying new elements from config.js into config.json");
+    deepCopy( objJs, objJson );
+    fs.writeFileSync( configJsonPath, JSON.stringify(objJson, null, 4));
 
 } catch (e) {    
     _util.infoLog(`Warning, unable to migrate ${configJsonPath} file.  ${e.message}`);

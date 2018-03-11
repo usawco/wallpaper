@@ -16,7 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 1.3.2  | An existing configuration is no longer overwritten when updating to latest version (pre and post install steps) | 
+| 1.3.3  | An existing configuration is no longer overwritten when updating to latest version (pre and post install steps) | 
 | 1.2.3  | A 'favorites' provider introduced, source code cleanup (eslint) |
 | 1.1.3  | Update README for 17.10 support |
 | 1.1.1  | Support global module installation |
