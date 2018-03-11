@@ -1,30 +1,68 @@
 {
-  "name": "desktop-eye-candy",
-  "version": "1.2.3",
-  "description": "Random generator to change my wallpaper",
-  "main": "lib/index.js",
-  "directories": {
-    "lib": "lib"
+  "_from": "desktop-eye-candy@1.2.3",
+  "_id": "desktop-eye-candy@1.2.3",
+  "_inBundle": false,
+  "_integrity": "sha512-xy3pUsjp6tsDR/sJwQlgNbfDUySi2MjnOSNzt/n1Wwv4SGgM+ScuGfIX3UBRZD91uMNT2aB9Se4QAZ+TmE0NxA==",
+  "_location": "/desktop-eye-candy",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "desktop-eye-candy@1.2.3",
+    "name": "desktop-eye-candy",
+    "escapedName": "desktop-eye-candy",
+    "rawSpec": "1.2.3",
+    "saveSpec": null,
+    "fetchSpec": "1.2.3"
   },
-  "scripts": {
-    "lint": "eslint --config .eslintrc.json --ignore-path .eslintignore test lib"
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/desktop-eye-candy/-/desktop-eye-candy-1.2.3.tgz",
+  "_shasum": "a7609538a934e0e57532f975b966808d5682a004",
+  "_spec": "desktop-eye-candy@1.2.3",
+  "_where": "/home/user/dev/git/usawco/wallpaper/bin",
+  "author": {
+    "name": "usawco"
   },
   "bin": {
     "wallpaper": "./bin/wallpaper.sh"
   },
-  "preferGlobal": true,
-  "author": "usawco",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/usawco/wallpaper.git"
+  "bugs": {
+    "url": "https://github.com/usawco/wallpaper/issues"
   },
-  "keywords" : [
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Random generator to change my wallpaper",
+  "devDependencies": {
+    "eslint": "^4.18.0"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "homepage": "https://github.com/usawco/wallpaper#readme",
+  "keywords": [
     "eye-candy",
     "wallpaper"
   ],
   "license": "Apache-2.0",
-  "devDependencies": {
-    "eslint": "^4.18.0"
+  "main": "lib/index.js",
+  "name": "desktop-eye-candy",
+  "os": [
+    "linux",
+    "!win32",
+    "!darwin"
+  ],
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usawco/wallpaper.git"
   },
-  "os" : [ "linux", "!win32", "!darwin" ]
+  "scripts": {
+    "lint": "eslint --config .eslintrc.json --ignore-path .eslintignore test lib",
+    "postinstall" : "scripts/post-install.js",
+    "preinstall" : "scripts/pre-install.js"
+  },
+  "version": "1.3.0"
 }

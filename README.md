@@ -3,26 +3,33 @@
 
 A program for setting randomized background wallpapers in a Linux desktop.
 
+Each time this program executes, it will select a random image from one of its configured providers to use as a desktop background. When launched from a keyboard shortcut, it provides a very simple yet effective method for changing your wallpaper. 
+
+The following providers are supported:
+
+* Google custom search
+* Bing image search
+* Pixabay image search
+* Flickr
+* Local json file of 'favorites' (See /installPath/favorites/items.json)
+
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 1.2.3  | 'favorites' provider introduced, source code cleanup (eslint) |
-| 1.1.3  | update 17.10 support |
+| 1.3.0  | An existing configuration is no longer overwritten when updating to latest version (pre and post install steps) | 
+| 1.2.3  | A 'favorites' provider introduced, source code cleanup (eslint) |
+| 1.1.3  | Update README for 17.10 support |
 | 1.1.1  | Support global module installation |
 | 1.0.7  | Initial release |
-
-FIX local image read from 'favorites folder!' 
-FIX my ability to test locally before pushing to npm
-Update README to reflect local handler (in install area)
-
+ 
 # Coming soon
-* don't overwrite prior config.json content AND UPDATE the README to indicate this
 * API to save current wallpaper to favorites provider
 * detect resolution at install-time
 * flickr hi-res api
 
 # Installation
-Each time this program executes, it will select a random image from one of its configured providers to use as a desktop background. When launched from a keyboard shortcut, it provides a very simple yet effective method for changing your wallpaper.
+
+Note: When updating an existing installation ( i.e. npm -g update desktop-eye-candy), the existing configuration elements in your lib/config.json file are no longer overwritten. Each time an update is applied, any new elements introduced into the source template lib/config.js file are added to your configuration. Elements are never deleted or overwritten.
 
 ## Download from npm Registry
 Perform a  global install, so 'wallpaper' is installed into your $NODE_HOME/bin directory.
@@ -74,7 +81,6 @@ PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/u
 user@zfs-VirtualBox:~/dev/git/usawco$ 
 
 ```
-
 
 # Usage Notes
 The same three files are created in the /tmp directory each time the shell script (wallpaper.sh) is run.
@@ -193,4 +199,3 @@ For example, here is the bing entry.  You would add a new entry with for your ha
 2. jsdoc
 3. consider a GUI config
 4. Pop a 'tile preview' panel containing a subset of the random entries. User clicks on a tile to select it. 
-5. Save 'favorites' to a store for later retrieval.
