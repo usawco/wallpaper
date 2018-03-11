@@ -7,19 +7,15 @@ const util = require('util');
 _util.infoLog('Executing post installation script');
 
 var configJsonPath;
-
 try {
-    let tmpdir = os.tmpdir();
-    configJsonPath = path.resolve( __dirname,'../lib', _util.CONFIG_FILE);
-    let configJsPath = path.resolve( __dirname,'../lib/config.js');
-    let tmpPath = path.resolve( tmpdir, _util.CONFIG_FILE);
-
-    let tmpExists = fs.existsSync(tmpPath);
-    if ( tmpExists) {
-        _util.infoLog(`Restoring archived ${tmpPath} to ${configJsonPath}`);
-        fs.copyFileSync( tmpPath, configJsonPath);
-        fs.unlinkSync( tmpPath );
-    } 
+    let configJsPath = path.resolve( __dirname, '../lib/config.js');
+    let homedir = os.homedir();    
+    let configDirPath = path.resolve( homedir,'.desktop-eye-candy');    
+    if ( !fs.existsSync(configDirPath)) {        
+        _util.infoLog(`Creating configuration directory in ${configDirPath}`);        
+        fs.mkdirSync(configDirPath);
+    }
+    configJsonPath = path.resolve( configDirPath, _util.CONFIG_FILE);    
 
     let objJs = require( configJsPath );
     let configExists = fs.existsSync(configJsonPath);
@@ -29,7 +25,7 @@ try {
     } else {
         objJson = {};
     }
-    _util.infoLog("Copying new elements from config.js into config.json");
+    _util.infoLog("Copying new elements from package's config.js into ${configJsonPath}");
     deepCopy( objJs, objJson );
     fs.writeFileSync( configJsonPath, JSON.stringify(objJson, null, 4));
 
