@@ -6,7 +6,8 @@ const _constants = require('../lib/constants');
 
 console.log('Executing post installation script');
 createConfig();
-removeScript();
+// This breaks npm -g uninstall desktop-eye-candy
+//removeScript();
 console.log("Post installation step completed");
 
 function createConfig() {
