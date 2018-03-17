@@ -1,19 +1,19 @@
-const _util = require( '../lib/util');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const util = require('util');
+const _constants = require('../lib/constants');
 
-_util.infoLog('Executing post installation script');
+console.log('Executing post installation script');
 
 var configJsonPath;
 try {
     let configJsPath = path.resolve( __dirname, '../lib/config.js');
-    if ( !fs.existsSync(_util.CONFIG_DIR)) {        
-        _util.infoLog(`Creating configuration directory in ${_util.CONFIG_DIR}`);        
-        fs.mkdirSync(_util.CONFIG_DIR);
+    if ( !fs.existsSync(_constants.CONFIG_DIR)) {        
+        console.log(`Creating configuration directory in ${_constants.CONFIG_DIR}`);        
+        fs.mkdirSync(_constants.CONFIG_DIR);
     }
-    configJsonPath = path.resolve( _util.CONFIG_DIR, _util.CONFIG_FILE);    
+    configJsonPath = path.resolve( _constants.CONFIG_DIR, _constants.CONFIG_FILE);    
 
     let objJs = require( configJsPath );
     let configExists = fs.existsSync(configJsonPath);
@@ -23,16 +23,16 @@ try {
     } else {
         objJson = {};
     }
-    _util.infoLog(`Copying new elements from package's config.js into ${configJsonPath}`);
+    console.log(`Copying new elements from package's config.js into ${configJsonPath}`);
     deepCopy( objJs, objJson );
     fs.writeFileSync( configJsonPath, JSON.stringify(objJson, null, 4));
 
 } catch (e) {    
-    _util.infoLog(`Warning, unable to migrate ${configJsonPath} file.  ${e.message}`);
-    _util.traceLog(e.stack);
+    console.log(`Warning, unable to migrate ${configJsonPath} file.  ${e.message}`);
+    console.log(e.stack);
 }
 
-_util.infoLog("Post installation step completed");
+//_util.infoLog("Post installation step completed");
 
 /**
  * non-destructive recursive copy. used for config as long as its depth remains shallow
