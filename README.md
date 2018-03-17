@@ -16,7 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 2.0.7   | Windows support (Requires Powershell)|
+| 2.0.8   | Windows support (Requires Powershell)|
 | 1.3.12  | Bugfix when install creates initial config.json
 | 1.3.11  | An existing configuration is no longer overwritten. config.json moves to ~/.desktop-eye-candy/config.json | 
 | 1.2.3  | A 'favorites' provider introduced, source code cleanup (eslint) |
@@ -79,7 +79,7 @@ The following platforms have been tested thus far.
 | Ubuntu 14.04  | None   |
 | Ubuntu 16.04  | After installation and configuration, logout and log back in if using keyboard shortcut. Convert-injected text is not rendered when nitrogen sets desktop.|
 | Ubuntu 17.10  | None   |
-| Windows 10 Home Edition (1709)   | Powershell must be in the path & 'c:\tmp' directory must exist |
+| Windows 10 Home Edition (1709)   | Powershell must be in the path & 'c:\tmp' directory must exist. (This is still very unstable) |
 
 
 ## Dependencies
