@@ -9,8 +9,7 @@ if ( ! [System.IO.File]::Exists("${Env:NODE_HOME}\node.exe")) {
     exit 1
 }
 
-#$launchJS = "$Env:NODE_HOME\node_modules\desktop-eye-candy\lib\index.js"
-$launchJS = "..\lib\index.js"
+$launchJS = "$PSScriptRoot\..\lib\index.js"
 
 if ( ![System.IO.File]::Exists( $launchJS)) {
     echo "Can't find launch file. ${launchJS}"
