@@ -1,7 +1,7 @@
 
 ![alt text](doc/images/sample-screenshot0.png "desktop-eye-candy")
 
-A program for setting randomized background wallpapers in a Linux desktop.
+A program for setting randomized background wallpapers in a Linux or Windows desktop.
 
 Each time this program executes, it will select a random image from one of its configured providers to use as a desktop background. When launched from a keyboard shortcut, it provides a very simple yet effective method for changing your wallpaper. 
 
@@ -9,13 +9,14 @@ The following providers are supported:
 
 * Google custom search
 * Bing image search
-* Pixabay image search
+* Pixabay image search (Linux only)
 * Flickr
 * Local json file of 'favorites' (See /installPath/favorites/items.json)
 
 # Revision history
 | when          | what   |
 | ------------- | :------|
+| 2.0.0   | Windows support (Requires Powershell)|
 | 1.3.12  | Bugfix when install creates initial config.json
 | 1.3.11  | An existing configuration is no longer overwritten. config.json moves to ~/.desktop-eye-candy/config.json | 
 | 1.2.3  | A 'favorites' provider introduced, source code cleanup (eslint) |
@@ -61,19 +62,28 @@ The following platforms have been tested thus far.
 | Ubuntu 14.04  | None   |
 | Ubuntu 16.04  | After installation and configuration, logout and log back in if using keyboard shortcut. Convert-injected text is not rendered when nitrogen sets desktop.|
 | Ubuntu 17.10  | None   |
+| Windows 10 Home Edition (1709)   | Powershell must be in the path & 'c:\tmp' directory must exist |
 
 
 ## Dependencies
 Ensure the following dependencies are installed:
+
+### Linux
 ```
 $ sudo apt-get install jq imagemagick nitrogen wget
 ```
 * jq - JSON parser
-* image-magic - Using 'convert' to inject text into image
+* imagemagick - Using 'convert' to inject text into image
 * nitrogen - set the desktop background to the downloaded image
 * wget - download image URL
 
+### Windows
+* Powershell must be in the Path
+
 ## Node.js
+Install Node.js
+
+### Linux
 * Install Node.js
 * Export a NODE_HOME variable
 ```
@@ -90,8 +100,12 @@ user@zfs-VirtualBox:~/dev/git/usawco$
 
 ```
 
+### Windows
+* Create NODE_HOME environment variable
+* Add %NODE_HOME% to the PATH variable
+
 # Usage Notes
-The same three files are created in the /tmp directory each time the shell script (wallpaper.sh) is run.
+The same three files are created in the /tmp directory each time the shell script (wallpaper.sh | .bat) is run.
 
 ```
 $ ls -l /tmp/wallpaper* /tmp/convert*
@@ -101,7 +115,7 @@ $ ls -l /tmp/wallpaper* /tmp/convert*
 $ 
 ```
 ## Configuration
-Modify the lib/config.json file
+Modify the ~/.desktop-eye-candy/config.json file
 * Insert your own API keys for [Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/web/), [Google Custom Search](https://developers.google.com/custom-search/json-api/v1/introduction#identify_your_application_to_google_with_api_key), or [Pixabay](https://pixabay.com/api/docs/)
 * Modify the search terms for each provider. (There is no GUI config at this time.)
 * The Flickr provider is disabled as their API doesn't seem to support hi-resolution image queries.
@@ -109,7 +123,7 @@ Modify the lib/config.json file
 
 # Troubleshooting
 
-## Shell script trace
+## Bash shell script trace (Linux-only)
 Uncomment these lines at the top of wallpaper.sh to produce a shell script log
 ```
 #!/bin/bash
@@ -124,6 +138,8 @@ echo 'Executing wallpaper.sh'
 
 ## Node JS logging
 Node.js trace logging is available via NODE_DEBUG env variable.
+
+### Linux
 ```
 $ cd ~/dev/git/usawco/wallpaper
 $ NODE_DEBUG=wallpaper,http ./wallpaper.sh
@@ -157,8 +173,41 @@ Setting wallpaper
 $ 
 ```
 
+### Windows
+```
+SET NODE_DEBUG=wallpaper
+C:\dev\git\usawco\wallpaper>node lib\wallpaper.js
+WALLPAPER 4872: Loading Favorites handler config
+WALLPAPER 4872: {"providers":{"favorites":{"enabled":true,"desc":"List of favorite images","feeds":["favorites/"]},"google":{"enabled":false,"desc":"Google custom search API","cx":"customer id goes here","key":"your key goes here","terms":["kittens","OR","volcanoes"],"imgSize":"huge"},"bing":{"enabled":false,"desc":"Bing (Azure) image search API","key":"your key goes here","terms":["tropical","nature"],"width":1920,"height":1080},"pixabay":{"enabled":false,"desc":"Pixabay.com image search API","key":"your key goes here","terms":["mountains","OR","forest","OR","ocean"],"width":1920,"height":1080},"flickr":{"enabled":false,"desc":"Flickr low resolution images (No key required)","terms":["kittens","puppies"]}}}
+WALLPAPER 4872: Favorites handler feeds:favorites/
+WALLPAPER 4872: Loading Google config
+WALLPAPER 4872: {"providers":{"favorites":{"enabled":true,"desc":"List of favorite images","feeds":["favorites/"]},"google":{"enabled":false,"desc":"Google custom search API","cx":"customer id goes here","key":"your key goes here","terms":["kittens","OR","volcanoes"],"imgSize":"huge"},"bing":{"enabled":false,"desc":"Bing (Azure) image search API","key":"your key goes here","terms":["tropical","nature"],"width":1920,"height":1080},"pixabay":{"enabled":false,"desc":"Pixabay.com image search API","key":"your key goes here","terms":["mountains","OR","forest","OR","ocean"],"width":1920,"height":1080},"flickr":{"enabled":false,"desc":"Flickr low resolution images (No key required)","terms":["kittens","puppies"]}}}
+WALLPAPER 4872: Loading Pixabay config
+WALLPAPER 4872: {"providers":{"favorites":{"enabled":true,"desc":"List of favorite images","feeds":["favorites/"]},"google":{"enabled":false,"desc":"Google custom search API","cx":"customer id goes here","key":"your key goes here","terms":["kittens","OR","volcanoes"],"imgSize":"huge"},"bing":{"enabled":false,"desc":"Bing (Azure) image search API","key":"your key goes here","terms":["tropical","nature"],"width":1920,"height":1080},"pixabay":{"enabled":false,"desc":"Pixabay.com image search API","key":"your key goes here","terms":["mountains","OR","forest","OR","ocean"],"width":1920,"height":1080},"flickr":{"enabled":false,"desc":"Flickr low resolution images (No key required)","terms":["kittens","puppies"]}}}
+WALLPAPER 4872: Loading Bing config
+WALLPAPER 4872: {"providers":{"favorites":{"enabled":true,"desc":"List of favorite images","feeds":["favorites/"]},"google":{"enabled":false,"desc":"Google custom search API","cx":"customer id goes here","key":"your key goes here","terms":["kittens","OR","volcanoes"],"imgSize":"huge"},"bing":{"enabled":false,"desc":"Bing (Azure) image search API","key":"your key goes here","terms":["tropical","nature"],"width":1920,"height":1080},"pixabay":{"enabled":false,"desc":"Pixabay.com image search API","key":"your key goes here","terms":["mountains","OR","forest","OR","ocean"],"width":1920,"height":1080},"flickr":{"enabled":false,"desc":"Flickr low resolution images (No key required)","terms":["kittens","puppies"]}}}
+WALLPAPER 4872: Executing wallpaper.js
+WALLPAPER 4872: Creating promises for Favorites handler
+WALLPAPER 4872: Inspecting feed path: favorites/
+WALLPAPER 4872: Parsing data into JSON object from C:\dev\git\usawco\wallpaper\favorites\items.json
+WALLPAPER 4872: Loaded 2 favorite items.
+WALLPAPER 4872: Bing handler is disabled
+WALLPAPER 4872: Google feed disabled
+WALLPAPER 4872: Pixabay feed is disabled
+WALLPAPER 4872: flickr feed disabled
+5 models acquired
+########
+Selected  0 from set of [0-2) from nasa: title: blackhole https://images-assets.nasa.gov/image/PIA20912/PIA20912~orig.jpg
+#######
+
+C:\dev\git\usawco\wallpaper>
+```
+
 # Keyboard Shortcut
-Add this program to a keyboard shortcut for maximum ease of use. I suggest using gnome-terminal for the terminal popup, so you can monitor its progress since some images may take a few seconds to download.
+Add this program to a keyboard shortcut for maximum ease of use. 
+
+## Linux
+I suggest using gnome-terminal for the terminal popup, so you can monitor its progress since some images may take a few seconds to download.
 ![alt text](doc/images/sample-screenshot1.png "gnome-terminal")
 
 e.g. I've created a bash profile called 'login' in the example below that sets the custom green foreground color.
@@ -168,6 +217,8 @@ e.g. I've created a bash profile called 'login' in the example below that sets t
 Tip: Make sure NODE_HOME environment variable is defined.
 ![alt text](doc/images/sample-screenshot2.png "keyboard shortcut")
 
+## Windows
+Create a Shortcut and assign a keyboard mnemonic
 
 # dev notes
 ## Adding another handler

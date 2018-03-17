@@ -22,10 +22,10 @@ start-process ${Env:NODE_HOME}\node.exe -ArgumentList $launchJS
 $file = "C:\tmp\wallpaper.json"
 if ( [System.IO.File]::Exists( $file)) {
 
-    $json = ConvertFrom-JSON Get-Content $file -raw
-
-    $imageLink = $json.link
-
+    $json = (Get-Content $file | Out-String | ConvertFrom-Json)
+    echo $json
+    $imageLink = ${json}.link
+    echo $imageLink
     #$imageLink = 'https://www.hdwallpapers.in/download/monsters_inc_hd-2560x1440.jpg'
 
     $client = new-object System.Net.WebClient
