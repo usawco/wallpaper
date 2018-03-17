@@ -16,7 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 2.0.3   | Windows support (Requires Powershell)|
+| 2.0.4   | Windows support (Requires Powershell)|
 | 1.3.12  | Bugfix when install creates initial config.json
 | 1.3.11  | An existing configuration is no longer overwritten. config.json moves to ~/.desktop-eye-candy/config.json | 
 | 1.2.3  | A 'favorites' provider introduced, source code cleanup (eslint) |
@@ -59,7 +59,17 @@ Most of the supported providers ( [Bing](https://azure.microsoft.com/en-us/prici
 Configure one of the supported providers by editing 'lib/config.json'. Minimally, you will want to install API keys and search terms.
 
 ## Invoke Shell Script
-Run the globally installed 'wallpaper' script to randomly select a desktop image from one of the configured providers.
+Run the globally installed bin script to randomly select a desktop image from one of the configured providers.
+### Linux
+```
+$ wallpaper
+```
+
+
+### Windows
+```
+c:\> %AppData%\npm\node_modules\desktop-eye-candy\bin\wallpaper.bat
+```
 
 # Testing Details
 The following platforms have been tested thus far.
