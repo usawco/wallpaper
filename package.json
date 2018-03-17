@@ -28,7 +28,7 @@
   },
   "bin": {
     "wallpaper": "./bin/wallpaper.sh",
-    "wallpaper.bat" : "./bin/wallpaper.bat"
+    "wallpaper.bat": "./bin/wallpaper.bat"
   },
   "bugs": {
     "url": "https://github.com/usawco/wallpaper/issues"
@@ -62,7 +62,10 @@
   },
   "scripts": {
     "lint": "eslint --config .eslintrc.json --ignore-path .eslintignore test lib",
-    "postinstall" : "node scripts/post-install.js"
+    "postinstall": "node scripts/post-install.js"
   },
-  "version": "2.0.0"
+  "version": "2.0.1",
+  "dependencies": {
+    "commander": "^2.15.0"
+  }
 }

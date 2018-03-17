@@ -16,7 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 2.0.0   | Windows support (Requires Powershell)|
+| 2.0.2   | Windows support (Requires Powershell)|
 | 1.3.12  | Bugfix when install creates initial config.json
 | 1.3.11  | An existing configuration is no longer overwritten. config.json moves to ~/.desktop-eye-candy/config.json | 
 | 1.2.3  | A 'favorites' provider introduced, source code cleanup (eslint) |
@@ -31,6 +31,7 @@ The following providers are supported:
 
 # Installation
 
+
 ## When updating an existing pre-1.3.8 installation for the first time. 
 
 ( i.e. npm -g update desktop-eye-candy)
@@ -41,10 +42,24 @@ Copy your existing config.json file to ~/desktop-eye-candy/config.json before ru
 
 
 ## Download from npm Registry
-Perform a  global install, so 'wallpaper' is installed into your $NODE_HOME/bin directory.
+If this is the first download, perform a  global install, so 'wallpaper' is installed into your $NODE_HOME/bin directory.
 ```
 npm install -g desktop-eye-candy
 ```
+
+## Or Update to latest version
+```
+npm upgrade -g desktop-eye-candy
+```
+Check your version
+e.g.
+```
+$ wallpaper --version
+Resolving configuration from /home/user/.desktop-eye-candy/config.json
+2.0.2
+$ 
+```
+
 ## Create API keys
 Most of the supported providers ( [Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/web/), [Google Custom Search](https://developers.google.com/custom-search/json-api/v1/introduction#identify_your_application_to_google_with_api_key), and [Pixabay](https://pixabay.com/api/docs/) ) require an authorized API key. Moreover, for Pixabay, one must send an email requesting access to high-resolution images as discussed in their API docs. The Flickr provider requires no API key; however, it is disabled by default.
 

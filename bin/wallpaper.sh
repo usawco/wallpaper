@@ -23,7 +23,7 @@ then
     exit 1
 fi
 echo "Executing... NODE_DEBUG=$NODE_DEBUG ${NODE_HOME}/bin/node ${LAUNCH_JS}"
-NODE_DEBUG=$NODE_DEBUG $NODE_HOME/bin/node ${LAUNCH_JS}
+NODE_DEBUG=$NODE_DEBUG $NODE_HOME/bin/node ${LAUNCH_JS} $*
 echo 'Downloading ' $imageLink
 if [ -f /tmp/wallpaper.json ] 
 then
