@@ -16,6 +16,7 @@ if ( ![System.IO.File]::Exists( $launchJS)) {
     exit 1
 }
 
+# Don't -Wait as this will prevent the desktop background from being refreshed with the new image
 start-process ${Env:NODE_HOME}\node.exe -ArgumentList $launchJS
 
 $file = "C:\tmp\wallpaper.json"
@@ -31,7 +32,8 @@ if ( [System.IO.File]::Exists( $file)) {
     $output = "c:\tmp\wallpaper.jpg"
     #$client.Downloadfile($imageLink, $output)
     Invoke-WebRequest -Uri $imageLink -OutFile $output
-
+    # Wait a few seconds for the download to complete
+    Start-Sleep -s 3
     Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name wallpaper -value $output
     rundll32.exe user32.dll, UpdatePerUserSystemParameters
 } else {
