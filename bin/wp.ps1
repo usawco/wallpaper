@@ -1,9 +1,7 @@
 echo "Running ps script"
 
 $jsonPath = "C:\tmp\wallpaper.json"
-Remove-Item –path $jsonPath
 $imagePath = "C:\tmp\wallpaper.jpg"
-Remove-Item –path $imagePath
 
 echo NODE_HOME: ${Env:NODE_HOME}
 echo 'Executing wallpaper.ps1'
