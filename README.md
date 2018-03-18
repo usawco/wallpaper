@@ -16,6 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
+| 2.0.9   | Switched to node.js http module
 | 2.0.8   | Windows support (Requires Powershell)|
 | 1.3.12  | Bugfix when install creates initial config.json
 | 1.3.11  | An existing configuration is no longer overwritten. config.json moves to ~/.desktop-eye-candy/config.json | 
