@@ -44,5 +44,6 @@ then
     #eog /tmp/convert.jpg
     echo 'Setting wallpaper'
     nitrogen --set-scaled --save /tmp/convert.jpg
+    echo "Return code: $?"
 fi
 

@@ -42,6 +42,7 @@ if ( [System.IO.File]::Exists( $jsonPath)) {
     echo "Setting desktop now..."
     Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name wallpaper -value $imagePath
     rundll32.exe user32.dll, UpdatePerUserSystemParameters
+    echo "Return code: ${Env%ERRORLEVEL%}"
 } else {
     echo "Can't find $jsonPath"
 }
