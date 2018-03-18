@@ -1,5 +1,10 @@
 echo "Running ps script"
 
+$jsonPath = "C:\tmp\wallpaper.json"
+Remove-Item –path $jsonPath
+$imagePath = "C:\tmp\wallpaper.jpg"
+Remove-Item –path $imagePath
+
 echo NODE_HOME: ${Env:NODE_HOME}
 echo 'Executing wallpaper.ps1'
 echo $(date)
@@ -18,24 +23,25 @@ if ( ![System.IO.File]::Exists( $launchJS)) {
 
 # Don't -Wait as this will prevent the desktop background from being refreshed with the new image
 start-process ${Env:NODE_HOME}\node.exe -ArgumentList $launchJS
+Start-Sleep -s 5
+if ( [System.IO.File]::Exists( $jsonPath)) {
 
-$file = "C:\tmp\wallpaper.json"
-if ( [System.IO.File]::Exists( $file)) {
-
-    $json = (Get-Content $file | Out-String | ConvertFrom-Json)
+    $json = (Get-Content $jsonPath | Out-String | ConvertFrom-Json)
     echo $json
     $imageLink = ${json}.link
     echo $imageLink
     #$imageLink = 'https://www.hdwallpapers.in/download/monsters_inc_hd-2560x1440.jpg'
 
-    $client = new-object System.Net.WebClient
-    $output = "c:\tmp\wallpaper.jpg"
-    #$client.Downloadfile($imageLink, $output)
-    Invoke-WebRequest -Uri $imageLink -OutFile $output
-    # Wait a few seconds for the download to complete
-    Start-Sleep -s 3
-    Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name wallpaper -value $output
+
+    #if ( ![System.IO.File]::Exists( $imagePath)) {
+    #    echo "######## Downloading file from powershell!"
+    #    Invoke-WebRequest -Uri $imageLink -OutFile $imagePath
+    #    # Wait a few seconds for the download to complete
+    #    Start-Sleep -s 3
+    #}
+    echo "Setting desktop now..."
+    Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name wallpaper -value $imagePath
     rundll32.exe user32.dll, UpdatePerUserSystemParameters
 } else {
-    echo "Can't find $file"
+    echo "Can't find $jsonPath"
 }
