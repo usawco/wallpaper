@@ -16,7 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 3.0.1    | Significant update to support upcoming GUI, image urls with 301 redirects now supported, improved error messages |
+| 3.0.2    | Significant update to support upcoming GUI, image urls with 301 redirects now supported, improved error messages |
 | 2.0.10   | Switched to node.js http module
 | 2.0.8   | Windows support (Requires Powershell)|
 | 1.3.12  | Bugfix when install creates initial config.json
@@ -238,6 +238,8 @@ Add this program to a keyboard shortcut for maximum ease of use.
 
 ## Linux
 I suggest using gnome-terminal for the terminal popup, so you can monitor its progress since some images may take a few seconds to download.
+> Note, the '-e' command invocation argument may be deprecated soon.
+
 ![alt text](doc/images/sample-screenshot1.png "gnome-terminal")
 
 e.g. I've created a bash profile called 'login' in the example below that sets the custom green foreground color.
@@ -246,6 +248,14 @@ e.g. I've created a bash profile called 'login' in the example below that sets t
 ```
 Tip: Make sure NODE_HOME environment variable is defined.
 ![alt text](doc/images/sample-screenshot2.png "keyboard shortcut")
+
+>Ubuntu 17.10 tip
+
+>When all else fails be absolute!
+
+> e.g.         /home/user/dev/tools/node-v9.7.1-linux-x64/bin/node /home/user/dev/tools/node-v9.7.1-linux-x64/lib/node_modules/desktop-eye-candy/bin/wallpaper.js exec
+
+>If this still doesn't work, check syslog.
 
 ## Windows
 Create a Shortcut and assign a keyboard mnemonic
