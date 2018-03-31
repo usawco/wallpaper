@@ -27,8 +27,7 @@
     "name": "usawco"
   },
   "bin": {
-    "wallpaper": "./bin/wallpaper.sh",
-    "wallpaper.bat": "./bin/wallpaper.bat"
+    "wallpaper": "./bin/wallpaper.js"
   },
   "bugs": {
     "url": "https://github.com/usawco/wallpaper/issues"
@@ -64,7 +63,7 @@
     "lint": "eslint --config .eslintrc.json --ignore-path .eslintignore test lib",
     "postinstall": "node scripts/post-install.js"
   },
-  "version": "2.0.10",
+  "version": "3.0.0",
   "dependencies": {
     "commander": "^2.15.0"
   }

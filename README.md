@@ -16,6 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
+| 3.0.0    | Significant update to support upcoming GUI, image urls with 301 redirects now supported, improved error messages |
 | 2.0.10   | Switched to node.js http module
 | 2.0.8   | Windows support (Requires Powershell)|
 | 1.3.12  | Bugfix when install creates initial config.json
@@ -32,6 +33,13 @@ The following providers are supported:
 
 # Installation
 
+## When updating to 3.0.0
+
+Prior to 3.0.0, the app was launched from OS scripts ( e.g. wallpaper.sh and wallpaper.bat ). This has been changed to 
+invoke bin/wallpaper.js.
+
+> Note, npm still creates a symbolic link to a 'wallpaper' command on that environment path; however, the command syntax is now different. 
+> 'wallpaper exec' is the new syntax. Please see [Command Syntax](#cli-syntax) for more details.
 
 ## When updating an existing pre-1.3.8 installation for the first time. 
 
@@ -59,18 +67,24 @@ Most of the supported providers ( [Bing](https://azure.microsoft.com/en-us/prici
 ## Configure
 Configure one of the supported providers by editing 'lib/config.json'. Minimally, you will want to install API keys and search terms.
 
-## Invoke Shell Script
-Run the globally installed bin script to randomly select a desktop image from one of the configured providers.
-### Linux
+## Command Syntax <a id="cli-syntax"></a>
+
+To generate a random image and set it to the desktop backgroud, run this command.
 ```
-$ wallpaper
+wallpaper exec
 ```
 
+The following options are supported.
 
-### Windows
-```
-c:\> %AppData%\npm\node_modules\desktop-eye-candy\bin\wallpaper.bat
-```
+| command     | Notes |
+| ----------- | ----- |
+| wallpaper -h | Help doc | 
+| wallpaper exec | Create a random image and set it on the desktop background.  The image should be immediately visible |
+| wallpaper gen | Create a new random image only. The /tmp/wallpaper.jps and /tmp/wallpaper.json files are created |
+| wallpaper set | Set the last desktop background using the last created image.
+| wallpaper get | Return the JSON string for /tmp/wallpaper.json |
+
+> Note, 'wallpaper exec' and 'wallpaper gen && wallpaper set' are functionally equivalent.
 
 # Testing Details
 The following platforms have been tested thus far.
@@ -88,12 +102,10 @@ Ensure the following dependencies are installed:
 
 ### Linux
 ```
-$ sudo apt-get install jq imagemagick nitrogen wget
+$ sudo apt-get install imagemagick nitrogen
 ```
-* jq - JSON parser
 * imagemagick - Using 'convert' to inject text into image
 * nitrogen - set the desktop background to the downloaded image
-* wget - download image URL
 
 ### Windows
 * Powershell must be in the Path
