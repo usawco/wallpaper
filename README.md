@@ -16,7 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 3.0.2    | Significant update to support upcoming GUI, image urls with 301 redirects now supported, improved error messages |
+| 3.0.3    | Significant update to support upcoming GUI, image urls with 301 redirects now supported, improved error messages |
 | 2.0.10   | Switched to node.js http module
 | 2.0.8   | Windows support (Requires Powershell)|
 | 1.3.12  | Bugfix when install creates initial config.json
@@ -153,35 +153,18 @@ Modify the ~/.desktop-eye-candy/config.json file
 
 # Troubleshooting
 
-## Bash shell script trace (Linux-only)
-Uncomment these lines at the top of wallpaper.sh to produce a shell script log
-```
-#!/bin/bash
-
-# Uncomment to dump to a log file
-#exec > /tmp/wallpaper.log 2>&1
-#set -x
-
-echo NODE_HOME: $NODE_HOME
-echo 'Executing wallpaper.sh'
-```
-
 ## Node JS logging
 Node.js trace logging is available via NODE_DEBUG env variable.
 
 ### Linux
 ```
-$ cd ~/dev/git/usawco/wallpaper
-$ NODE_DEBUG=wallpaper,http ./wallpaper.sh
- 09:05:08 up 17:12,  4 users,  load average: 0.18, 0.28, 0.45
-Done
-NODE_HOME: /home/user/dev/tools/nodejs/node-v8.9.4-linux-x64
-Executing wallpaper.sh
-Mon Mar 5 09:05:08 EST 2018
-removing old image
-Getting list of images
-WALLPAPER 10490: Loading Google config
-WALLPAPER 10490: {"providers":{"google":{"enabled":true,Cache-Control: max-age=2592000
+$ NODE_DEBUG=wallpaper wallpaper exec
+Resolving configuration from /home/user/.desktop-eye-candy/config.json
+WALLPAPER 12183: Loading Favorites handler config
+WALLPAPER 12183: {"enabled":false,"desc":"List of favorite images","feeds":["favorites/"]}
+WALLPAPER 12183: Loading flickr config
+WALLPAPER 12183: {"enabled":false,"terms":["mountains","puppies"],"desc":"Flickr low resolution images (No key required)"}
+WALLPAPER 12183: Loading Google config
 .
 .
 .
@@ -204,33 +187,18 @@ $
 ```
 
 ### Windows
-```
-SET NODE_DEBUG=wallpaper
-C:\dev\git\usawco\wallpaper>node lib\wallpaper.js
-WALLPAPER 4872: Loading Favorites handler config
-WALLPAPER 4872: {"providers":{"favorites":{"enabled":true,"desc":"List of favorite images","feeds":["favorites/"]},"google":{"enabled":false,"desc":"Google custom search API","cx":"customer id goes here","key":"your key goes here","terms":["kittens","OR","volcanoes"],"imgSize":"huge"},"bing":{"enabled":false,"desc":"Bing (Azure) image search API","key":"your key goes here","terms":["tropical","nature"],"width":1920,"height":1080},"pixabay":{"enabled":false,"desc":"Pixabay.com image search API","key":"your key goes here","terms":["mountains","OR","forest","OR","ocean"],"width":1920,"height":1080},"flickr":{"enabled":false,"desc":"Flickr low resolution images (No key required)","terms":["kittens","puppies"]}}}
-WALLPAPER 4872: Favorites handler feeds:favorites/
-WALLPAPER 4872: Loading Google config
-WALLPAPER 4872: {"providers":{"favorites":{"enabled":true,"desc":"List of favorite images","feeds":["favorites/"]},"google":{"enabled":false,"desc":"Google custom search API","cx":"customer id goes here","key":"your key goes here","terms":["kittens","OR","volcanoes"],"imgSize":"huge"},"bing":{"enabled":false,"desc":"Bing (Azure) image search API","key":"your key goes here","terms":["tropical","nature"],"width":1920,"height":1080},"pixabay":{"enabled":false,"desc":"Pixabay.com image search API","key":"your key goes here","terms":["mountains","OR","forest","OR","ocean"],"width":1920,"height":1080},"flickr":{"enabled":false,"desc":"Flickr low resolution images (No key required)","terms":["kittens","puppies"]}}}
-WALLPAPER 4872: Loading Pixabay config
-WALLPAPER 4872: {"providers":{"favorites":{"enabled":true,"desc":"List of favorite images","feeds":["favorites/"]},"google":{"enabled":false,"desc":"Google custom search API","cx":"customer id goes here","key":"your key goes here","terms":["kittens","OR","volcanoes"],"imgSize":"huge"},"bing":{"enabled":false,"desc":"Bing (Azure) image search API","key":"your key goes here","terms":["tropical","nature"],"width":1920,"height":1080},"pixabay":{"enabled":false,"desc":"Pixabay.com image search API","key":"your key goes here","terms":["mountains","OR","forest","OR","ocean"],"width":1920,"height":1080},"flickr":{"enabled":false,"desc":"Flickr low resolution images (No key required)","terms":["kittens","puppies"]}}}
-WALLPAPER 4872: Loading Bing config
-WALLPAPER 4872: {"providers":{"favorites":{"enabled":true,"desc":"List of favorite images","feeds":["favorites/"]},"google":{"enabled":false,"desc":"Google custom search API","cx":"customer id goes here","key":"your key goes here","terms":["kittens","OR","volcanoes"],"imgSize":"huge"},"bing":{"enabled":false,"desc":"Bing (Azure) image search API","key":"your key goes here","terms":["tropical","nature"],"width":1920,"height":1080},"pixabay":{"enabled":false,"desc":"Pixabay.com image search API","key":"your key goes here","terms":["mountains","OR","forest","OR","ocean"],"width":1920,"height":1080},"flickr":{"enabled":false,"desc":"Flickr low resolution images (No key required)","terms":["kittens","puppies"]}}}
-WALLPAPER 4872: Executing wallpaper.js
-WALLPAPER 4872: Creating promises for Favorites handler
-WALLPAPER 4872: Inspecting feed path: favorites/
-WALLPAPER 4872: Parsing data into JSON object from C:\dev\git\usawco\wallpaper\favorites\items.json
-WALLPAPER 4872: Loaded 2 favorite items.
-WALLPAPER 4872: Bing handler is disabled
-WALLPAPER 4872: Google feed disabled
-WALLPAPER 4872: Pixabay feed is disabled
-WALLPAPER 4872: flickr feed disabled
-5 models acquired
-########
-Selected  0 from set of [0-2) from nasa: title: blackhole https://images-assets.nasa.gov/image/PIA20912/PIA20912~orig.jpg
-#######
 
-C:\dev\git\usawco\wallpaper>
+```
+C:\>set NODE_DEBUG=wallpaper
+
+C:\>wallpaper
+Resolving configuration from C:\Users\user\.desktop-eye-candy\config.json
+WALLPAPER 6824: Loading Favorites handler config
+WALLPAPER 6824: {"enabled":true,"desc":"List of favorite images","feeds":["favorites/"]}
+WALLPAPER 6824: Loading flickr config
+.
+.
+.
 ```
 
 # Keyboard Shortcut

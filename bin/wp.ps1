@@ -1,16 +1,14 @@
-echo "Running ps script"
+echo "Running wp.ps1 script"
 
-echo $1
-
-$jsonPath = "C:\tmp\wallpaper.json"
-$imagePath = "C:\tmp\wallpaper.jpg"
+echo "Image details: $1"
 
 if ( [System.IO.File]::Exists( $imagePath)) {
 
-    echo "Setting desktop now for $1"
-    Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name wallpaper -value $imagePath
+    echo "Setting desktop using $imagePath"
+    Set-ItemProperty -path "HKCU:\Control Panel\Desktop" -name 'wallpaper' -value 'c:\tmp\wallpaper.jpg'
     rundll32.exe user32.dll, UpdatePerUserSystemParameters
-    echo "Return code: ${Env.%ERRORLEVEL%}"
+    echo "Execution successful? $?"
+    echo "Error? $error"
 } else {
     echo "Can't find $imagePath"
 }
