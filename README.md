@@ -16,7 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 3.0.3    | Significant update to support upcoming GUI, image urls with 301 redirects now supported, improved error messages |
+| 3.0.4    | Significant update to support upcoming GUI, image urls with 301 redirects now supported, improved error messages |
 | 2.0.10   | Switched to node.js http module
 | 2.0.8   | Windows support (Requires Powershell)|
 | 1.3.12  | Bugfix when install creates initial config.json
