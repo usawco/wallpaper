@@ -16,7 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 3.1.0    | Switched to [jimp](https://www.npmjs.com/package/jimp) node package for text annotation. (pixabay handler supported for windows now) |
+| 3.1.1    | Switched to [jimp](https://www.npmjs.com/package/jimp) node package for text annotation. (pixabay handler supported for windows now) |
 | 3.0.4    | Significant update to support upcoming GUI, image urls with 301 redirects now supported, improved error messages |
 | 2.0.10   | Switched to node.js http module
 | 2.0.8   | Windows support (Requires Powershell)|
@@ -226,7 +226,11 @@ Tip: Make sure NODE_HOME environment variable is defined.
 >If this still doesn't work, check syslog.
 
 ## Windows
-Create a Shortcut and assign a keyboard mnemonic
+Create a Shortcut and assign a keyboard mnemonic 
+```
+Start in: %APPDATA%\npm
+Target: C:\WINDOWS\system32\cmd.exe /c wallpaper exec
+```
 
 # dev notes
 ## Adding another handler
