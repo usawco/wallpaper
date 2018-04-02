@@ -16,7 +16,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 3.1.1    | Switched to [jimp](https://www.npmjs.com/package/jimp) node package for text annotation. (pixabay handler supported for windows now) |
+| 3.1.2    | Switched to [jimp](https://www.npmjs.com/package/jimp) node package for text annotation. (pixabay handler supported for windows now) |
 | 3.0.4    | Significant update to support upcoming GUI, image urls with 301 redirects now supported, improved error messages |
 | 2.0.10   | Switched to node.js http module
 | 2.0.8   | Windows support (Requires Powershell)|
@@ -32,9 +32,16 @@ The following providers are supported:
 * detect resolution at install-time
 * flickr hi-res api
 
-# Installation
+# Upgrading
 
-## When updating to 3.0.0
+If you've already installed an earlier version of desktop-eye-candy, you may use npm to upgrade the package.
+
+```
+npm upgrade -g desktop-eye-candy
+```
+Depending upon your version, an additional step is required depending upon your version.
+
+## [1.3.8 - 3.0.0)
 
 Prior to 3.0.0, the app was launched from OS scripts ( e.g. wallpaper.sh and wallpaper.bat ). This has been changed to 
 invoke bin/wallpaper.js.
@@ -42,24 +49,21 @@ invoke bin/wallpaper.js.
 > Note, npm still creates a symbolic link to a 'wallpaper' command on that environment path; however, the command syntax is now different. 
 > 'wallpaper exec' is the new syntax. Please see [Command Syntax](#cli-syntax) for more details.
 
-## When updating an existing pre-1.3.8 installation for the first time. 
-
-( i.e. npm -g update desktop-eye-candy)
+## [1.0.7 - 1.3.8)
 
 The existing configuration elements are no longer overwritten. Each time an update is applied, any new elements introduced into the source template lib/config.js file are added to your configuration (~/desktop-eye-candy/config.json) . Elements are never deleted or overwritten.
 
 Copy your existing config.json file to ~/desktop-eye-candy/config.json before running npm -g update desktop-eye-candy. This manual step is only required one time since future updates will look for the configuration file in its new location.
 
 
+# Installation
+
+If installing for the first time...
+
 ## Download from npm Registry
 If this is the first download, perform a  global install, so 'wallpaper' is installed into your $NODE_HOME/bin directory.
 ```
 npm install -g desktop-eye-candy
-```
-
-## Or Update to latest version
-```
-npm upgrade -g desktop-eye-candy
 ```
 
 ## Create API keys
@@ -205,6 +209,7 @@ WALLPAPER 6824: Loading flickr config
 Add this program to a keyboard shortcut for maximum ease of use. 
 
 ## Linux
+
 I suggest using gnome-terminal for the terminal popup, so you can monitor its progress since some images may take a few seconds to download.
 > Note, the '-e' command invocation argument may be deprecated soon.
 
@@ -217,13 +222,6 @@ e.g. I've created a bash profile called 'login' in the example below that sets t
 Tip: Make sure NODE_HOME environment variable is defined.
 ![alt text](doc/images/sample-screenshot2.png "keyboard shortcut")
 
->Ubuntu 17.10 tip
-
->When all else fails be absolute!
-
-> e.g.         /home/user/dev/tools/node-v9.7.1-linux-x64/bin/node /home/user/dev/tools/node-v9.7.1-linux-x64/lib/node_modules/desktop-eye-candy/bin/wallpaper.js exec
-
->If this still doesn't work, check syslog.
 
 ## Windows
 Create a Shortcut and assign a keyboard mnemonic 
