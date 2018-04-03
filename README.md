@@ -10,12 +10,14 @@ The following providers are supported:
 * Google custom search
 * Bing image search
 * Pixabay image search
-* Flickr
+* Flickr (low-res requires no api key)
+* Flickr hi-res
 * Local json file of 'favorites' (See /installPath/favorites/items.json)
 
 # Revision history
 | when          | what   |
 | ------------- | :------|
+| 3.2.0    | flickr hi-res handler supported
 | 3.1.4    | Switched to [jimp](https://www.npmjs.com/package/jimp) node package for text annotation. (pixabay handler supported for windows now) |
 | 3.0.4    | Significant update to support upcoming GUI, image urls with 301 redirects now supported, improved error messages |
 | 2.0.10   | Switched to node.js http module
@@ -30,7 +32,6 @@ The following providers are supported:
 # Coming soon
 * API to save current wallpaper to favorites provider
 * detect resolution at install-time
-* flickr hi-res api
 
 # Upgrading
 
@@ -67,7 +68,7 @@ npm install -g desktop-eye-candy
 ```
 
 ## Create API keys
-Most of the supported providers ( [Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/web/), [Google Custom Search](https://developers.google.com/custom-search/json-api/v1/introduction#identify_your_application_to_google_with_api_key), and [Pixabay](https://pixabay.com/api/docs/) ) require an authorized API key. Moreover, for Pixabay, one must send an email requesting access to high-resolution images as discussed in their API docs. The Flickr provider requires no API key; however, it is disabled by default.
+Most of the supported providers ( [Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/web/), [Google Custom Search](https://developers.google.com/custom-search/json-api/v1/introduction#identify_your_application_to_google_with_api_key), [Flickr HiRes](https://www.flickr.com/services/api/) and [Pixabay](https://pixabay.com/api/docs/) ) require an authorized API key. Moreover, for Pixabay, one must send an email requesting access to high-resolution images as discussed in their API docs. The Flickr provider requires no API key; however, it is disabled by default.
 
 ## Configure
 Configure one of the supported providers by editing 'lib/config.json'. Minimally, you will want to install API keys and search terms.
@@ -150,7 +151,7 @@ $
 ```
 ## Configuration
 Modify the ~/.desktop-eye-candy/config.json file
-* Insert your own API keys for [Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/web/), [Google Custom Search](https://developers.google.com/custom-search/json-api/v1/introduction#identify_your_application_to_google_with_api_key), or [Pixabay](https://pixabay.com/api/docs/)
+* Insert your own API keys for [Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/web/), [Google Custom Search](https://developers.google.com/custom-search/json-api/v1/introduction#identify_your_application_to_google_with_api_key), [Flickr API](https://www.flickr.com/services/api/) or [Pixabay](https://pixabay.com/api/docs/)
 * Modify the search terms for each provider. (There is no GUI config at this time.)
 * The Flickr provider is disabled as their API doesn't seem to support hi-resolution image queries.
 
