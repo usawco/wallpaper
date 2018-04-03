@@ -17,7 +17,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 3.2.1    | flickr hi-res handler supported
+| 3.2.2    | flickr hi-res handler supported
 | 3.1.4    | Switched to [jimp](https://www.npmjs.com/package/jimp) node package for text annotation. (pixabay handler supported for windows now) |
 | 3.0.4    | Significant update to support upcoming GUI, image urls with 301 redirects now supported, improved error messages |
 | 2.0.10   | Switched to node.js http module
@@ -71,7 +71,7 @@ npm install -g desktop-eye-candy
 Most of the supported providers ( [Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/web/), [Google Custom Search](https://developers.google.com/custom-search/json-api/v1/introduction#identify_your_application_to_google_with_api_key), [Flickr HiRes](https://www.flickr.com/services/api/) and [Pixabay](https://pixabay.com/api/docs/) ) require an authorized API key. Moreover, for Pixabay, one must send an email requesting access to high-resolution images as discussed in their API docs. The Flickr provider requires no API key; however, it is disabled by default.
 
 ## Configure
-Configure one of the supported providers by editing 'lib/config.json'. Minimally, you will want to install API keys and search terms.
+Configure one of the supported providers by editing '~/.desktop-eye-candy/config.json'. You will want to install API keys and search terms.
 
 ## Command Syntax <a id="cli-syntax"></a>
 
@@ -140,11 +140,10 @@ user@zfs-VirtualBox:~/dev/git/usawco$
 * Add %NODE_HOME% to the PATH variable
 
 # Usage Notes
-The same three files are created in the /tmp directory each time the shell script (wallpaper.sh | .bat) is run.
+The same two files are created in the /tmp directory each time 'wallpaper exec' or 'wallpaper gen' is run.
 
 ```
-$ ls -l /tmp/wallpaper* /tmp/convert*
--rw-rw-r-- 1 user user 605612 Mar  5 09:05 /tmp/convert.jpg
+$ ls -l /tmp/wallpaper*
 -rw-rw-r-- 1 user user 557659 Mar  4  2015 /tmp/wallpaper.jpg
 -rw-rw-r-- 1 user user    185 Mar  5 09:05 /tmp/wallpaper.json
 $ 
