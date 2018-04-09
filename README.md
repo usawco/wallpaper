@@ -17,6 +17,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
+| 3.3.4   | Need to pass the full directory path (including drive letter) for later windows 10 builds.
 | 3.3.3   | add '/tmp' directory to the config, so it can be overridden and create directory if it doesn't exist.
 | 3.3.1    | Switched to proper [win32 API](https://msdn.microsoft.com/en-us/library/windows/desktop/ms724947(v=vs.85).aspx) call for reliably setting desktop for Windows |
 | 3.2.3    | bugfix for local file favorites with older node.js |
@@ -69,6 +70,13 @@ If this is the first download, perform a  global install, so 'wallpaper' is inst
 ```
 npm install -g desktop-eye-candy
 ```
+
+## Specify imagePath
+> For Windows, you MUST specify the drive letter too.  
+e.g.
+```
+ "imagePathDirectory" : "c:/tmp/A",
+  ```
 
 ## Create API keys
 Most of the supported providers ( [Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/web/), [Google Custom Search](https://developers.google.com/custom-search/json-api/v1/introduction#identify_your_application_to_google_with_api_key), [Flickr HiRes](https://www.flickr.com/services/api/) and [Pixabay](https://pixabay.com/api/docs/) ) require an authorized API key. Moreover, for Pixabay, one must send an email requesting access to high-resolution images as discussed in their API docs. The Flickr provider requires no API key; however, it is disabled by default.
