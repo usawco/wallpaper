@@ -1,6 +1,7 @@
-echo "Running wp.ps1 script"
+echo "Running wp.ps1 script: $args"
 
-$imagePath='c:\tmp\wallpaper.jpg'
+$imagePath=$args[0]
+echo "Setting desktop with imagePath: $imagePath"
 
 #  https://msdn.microsoft.com/en-us/library/windows/desktop/ms724947(v=vs.85).aspx
 $SetWallpaperAction = 0x14
