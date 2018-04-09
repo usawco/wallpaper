@@ -17,6 +17,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
+| 3.3.2    | add '/tmp' directory to the config, so it can be overridden and create directory if it doesn't exist.
 | 3.3.1    | Switched to proper [win32 API](https://msdn.microsoft.com/en-us/library/windows/desktop/ms724947(v=vs.85).aspx) call for reliably setting desktop for Windows |
 | 3.2.3    | bugfix for local file favorites with older node.js |
 | 3.2.2    | flickr hi-res handler supported

@@ -8,7 +8,7 @@ const app = require('../lib/index.js');
 const pkgJson = fs.readFileSync(path.resolve( __dirname, '../package.json'));
 const json = JSON.parse( pkgJson );
 program
-  .version(json.version)
+  .version(json.version, '-v, --version')
   .description('set random desktop background image');
   //.option('-a, --autodetect', 'Detect desktop resolution and update queries')
 
