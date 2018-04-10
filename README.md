@@ -111,7 +111,7 @@ The following platforms have been tested thus far.
 | Ubuntu 14.04  | None   |
 | Ubuntu 16.04  | After installation and configuration, logout and log back in if using keyboard shortcut.|
 | Ubuntu 17.10  | None   |
-| Windows 10 Home Edition (1709)   | Powershell must be in the path & 'c:\tmp' directory must exist. |
+| Windows 10 Home Edition (1709)   | Powershell must be in the path. |
 
 
 ## Dependencies
@@ -150,8 +150,10 @@ user@zfs-VirtualBox:~/dev/git/usawco$
 * Create NODE_HOME environment variable
 * Add %NODE_HOME% to the PATH variable
 
+> Or use the Node.js .msi installer
+
 # Usage Notes
-The same two files are created in the /tmp directory each time 'wallpaper exec' or 'wallpaper gen' is run.
+The same two files are created in the configured imagePathDirectory each time 'wallpaper exec' or 'wallpaper gen' is run.
 
 ```
 $ ls -l /tmp/wallpaper*
@@ -161,9 +163,10 @@ $
 ```
 ## Configuration
 Modify the ~/.desktop-eye-candy/config.json file
+* Verify the imagePathDirectory setting.  (Windows must include the drive letter. e.g. C:/tmp )
 * Insert your own API keys for [Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/web/), [Google Custom Search](https://developers.google.com/custom-search/json-api/v1/introduction#identify_your_application_to_google_with_api_key), [Flickr API](https://www.flickr.com/services/api/) or [Pixabay](https://pixabay.com/api/docs/)
 * Modify the search terms for each provider. (There is no GUI config at this time.)
-* The Flickr provider is disabled as their API doesn't seem to support hi-resolution image queries.
+* Change the provider's 'enabled' key value from false to true.
 
 
 # Troubleshooting
@@ -222,15 +225,20 @@ Add this program to a keyboard shortcut for maximum ease of use.
 ## Linux
 
 I suggest using gnome-terminal for the terminal popup, so you can monitor its progress since some images may take a few seconds to download.
-> Note, the '-e' command invocation argument may be deprecated soon.
 
 ![alt text](doc/images/sample-screenshot1.png "gnome-terminal")
 
 e.g. I've created a bash profile called 'login' in the example below that sets the custom green foreground color.
+
 ```
- $ gnome-terminal --window-with-profile=login -e /yourPathToNodeHome/bin/wallpaper
+$ gnome-terminal --window-with-profile=login -e /home/user/desktop-eye-candy.sh
 ```
-Tip: Make sure NODE_HOME environment variable is defined.
+```
+ user@user-VirtualBox:~/dev/git/usawco/wallpaper$ cat ~/desktop-eye-candy.sh 
+#!/bin/bash
+NODE_DEBUG=wallpaper wallpaper exec 
+```
+
 ![alt text](doc/images/sample-screenshot2.png "keyboard shortcut")
 
 
@@ -276,6 +284,5 @@ For example, here is the bing entry.  You would add a new entry with for your ha
 
 # TODO
 1. unit tests with mocking support
-2. jsdoc
-3. consider a GUI config
-4. Pop a 'tile preview' panel containing a subset of the random entries. User clicks on a tile to select it. 
+2. consider a GUI config
+3. Pop a 'tile preview' panel containing a subset of the random entries. User clicks on a tile to select it. 
