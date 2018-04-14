@@ -17,7 +17,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 4.0.0   | 'Favorites' redesign (See [Providers](#providers) for more details and 'fav' action supported on API.
+| 4.0.1   | 'Favorites' redesign (See [Providers](#providers) for more details and 'fav' action supported on API.
 | 3.3.4   | Need to pass the full directory path (including drive letter) for later windows 10 builds.
 | 3.3.3   | add '/tmp' directory to the config, so it can be overridden and create directory if it doesn't exist.
 | 3.3.1    | Switched to proper [win32 API](https://msdn.microsoft.com/en-us/library/windows/desktop/ms724947(v=vs.85).aspx) call for reliably setting desktop for Windows |

@@ -84,7 +84,6 @@ function migrateFavorites() {
         console.log('Migrating local sample image files installed with the product');
         if ( fs.existsSync(oldFavoritesPath)) {  
             fs.readdir(oldFavoritesPath, (err, items) => {
-                console.log(items);
                 if ( err) {
                     console.log(`Unable to install sample favorites. ${err}`);
                 }                
