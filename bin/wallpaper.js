@@ -36,7 +36,13 @@ program
   .description('Get current desktop image metadata')
   .action( () => console.log(app.getLastEntry()) );
 
-program.parse(process.argv);
+  program   
+  .command('fav')
+  //.arguments()
+  .description('Add current generated image to favorites feed')
+  .action(() => favorite() );
+
+  program.parse(process.argv);
 
 function execute() {
   app.generateImage(true);
@@ -48,5 +54,9 @@ function generate() {
 
 function setDesktop() {
     app.setBackground();
+}
+
+function favorite() {
+    app.setFavorite();
 }
 

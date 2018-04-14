@@ -17,6 +17,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
+| 4.0.0   | 'Favorites' redesign (See [Providers](#providers) for more details and 'fav' action supported on API.
 | 3.3.4   | Need to pass the full directory path (including drive letter) for later windows 10 builds.
 | 3.3.3   | add '/tmp' directory to the config, so it can be overridden and create directory if it doesn't exist.
 | 3.3.1    | Switched to proper [win32 API](https://msdn.microsoft.com/en-us/library/windows/desktop/ms724947(v=vs.85).aspx) call for reliably setting desktop for Windows |
@@ -34,10 +35,14 @@ The following providers are supported:
 | 1.0.7  | Initial release |
  
 # Coming soon
-* API to save current wallpaper to favorites provider
+* UI support (via Visual Studio for Code extension)
 * detect resolution at install-time
 
-# Upgrading
+# Package Installer
+
+How to install this release.
+
+## Upgrading
 
 If you've already installed an earlier version of desktop-eye-candy, you may use npm to upgrade the package.
 
@@ -46,7 +51,7 @@ npm upgrade -g desktop-eye-candy
 ```
 Depending upon your version, an additional step is required depending upon your version.
 
-## [1.3.8 - 3.0.0)
+### [1.3.8 - 3.0.0)
 
 Prior to 3.0.0, the app was launched from OS scripts ( e.g. wallpaper.sh and wallpaper.bat ). This has been changed to 
 invoke bin/wallpaper.js.
@@ -54,29 +59,36 @@ invoke bin/wallpaper.js.
 > Note, npm still creates a symbolic link to a 'wallpaper' command on that environment path; however, the command syntax is now different. 
 > 'wallpaper exec' is the new syntax. Please see [Command Syntax](#cli-syntax) for more details.
 
-## [1.0.7 - 1.3.8)
+### [1.0.7 - 1.3.8)
 
 The existing configuration elements are no longer overwritten. Each time an update is applied, any new elements introduced into the source template lib/config.js file are added to your configuration (~/desktop-eye-candy/config.json) . Elements are never deleted or overwritten.
 
 Copy your existing config.json file to ~/desktop-eye-candy/config.json before running npm -g update desktop-eye-candy. This manual step is only required one time since future updates will look for the configuration file in its new location.
 
 
-# Installation
+## Installation
 
 If installing for the first time...
 
 ## Download from npm Registry
-If this is the first download, perform a  global install, so 'wallpaper' is installed into your $NODE_HOME/bin directory.
+If this is the first download, perform a  global install, so 'wallpaper' is accessible on your PATH.
 ```
 npm install -g desktop-eye-candy
 ```
 
 ## Specify imagePath
-> For Windows, you MUST specify the drive letter too.  
+> For Windows, you MUST specify the drive letter too. 'Drive 'C:' is the default post-installation added automatically.
 e.g.
 ```
- "imagePathDirectory" : "c:/tmp/A",
-  ```
+ "imagePathDirectory" : "c:/tmp",
+```
+## Post Install/Upgrade Setup
+
+After the package is installed or updated, a script runs to complete the post-installation setup.
+* Create an app home directory under ~/.desktop-eye-candy
+* Install ~/.desktop-eye-candy/images  - i.e. the default local file store for the localFS provider)
+* Install ~/.desktop-eye-candy/favorites.json containing favorite URLs for the favorites provider
+
 
 ## Create API keys
 Most of the supported providers ( [Bing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/web/), [Google Custom Search](https://developers.google.com/custom-search/json-api/v1/introduction#identify_your_application_to_google_with_api_key), [Flickr HiRes](https://www.flickr.com/services/api/) and [Pixabay](https://pixabay.com/api/docs/) ) require an authorized API key. Moreover, for Pixabay, one must send an email requesting access to high-resolution images as discussed in their API docs. The Flickr provider requires no API key; however, it is disabled by default.
@@ -100,6 +112,7 @@ The following options are supported.
 | wallpaper gen | Create a new random image only. The /tmp/wallpaper.jps and /tmp/wallpaper.json files are created |
 | wallpaper set | Set the last desktop background using the last created image.
 | wallpaper get | Return the JSON string for /tmp/wallpaper.json |
+| wallpaper fav | Create an entry in the ~/.desktop-eye-candy/favorites folder for the currently selected desktop image
 
 > Note, 'wallpaper exec' and 'wallpaper gen && wallpaper set' are functionally equivalent.
 
@@ -155,12 +168,39 @@ user@zfs-VirtualBox:~/dev/git/usawco$
 # Usage Notes
 The same two files are created in the configured imagePathDirectory each time 'wallpaper exec' or 'wallpaper gen' is run.
 
+e.g.
 ```
 $ ls -l /tmp/wallpaper*
 -rw-rw-r-- 1 user user 557659 Mar  4  2015 /tmp/wallpaper.jpg
 -rw-rw-r-- 1 user user    185 Mar  5 09:05 /tmp/wallpaper.json
 $ 
 ```
+
+## Image Provider Notes <a id="providers"></a>
+
+This section provides more information regarding the delivered set of image providers.
+
+Desktop-eye-candy randomly selects images from several sources. Each source is described as a  'provider'. The rest of this section describes information for each of the available providers.
+
+### Local File System Provider
+This was originally described as a 'favorites' provider feature; however, it is now renamed as the 'Local file system provider'. This provider contains a list of local
+directory paths containing image files. By default, there always exists one implicitly defined directory path to ~/.desktop-eye-candy/images
+
+### Favorites Provider
+This provider contains a list of URLs stored in a JSON formatted file in the app's home directory. New entries may be added to the favorites via the 'fav'
+command. It's purpose is to bookmark a set of the random entries deemed 'favorites'.  The file may be found here: ~/.desktop-eye-candy/favorites.json
+
+### Google Custom Search
+
+### Bing
+
+### Flickr LoRes
+
+### Pixabay
+
+### Flickr HiRes
+
+
 ## Configuration
 Modify the ~/.desktop-eye-candy/config.json file
 * Verify the imagePathDirectory setting.  (Windows must include the drive letter. e.g. C:/tmp )
