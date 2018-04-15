@@ -17,6 +17,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
+| 4.0.3   | Clarify installation step (i.e. [Semantic Versioning](https://docs.npmjs.com/getting-started/semantic-versioning)) |
 | 4.0.2   | 'Favorites' redesign (See [Providers](#providers) for more details and 'fav' action supported on API.
 | 3.3.4   | Need to pass the full directory path (including drive letter) for later windows 10 builds.
 | 3.3.3   | add '/tmp' directory to the config, so it can be overridden and create directory if it doesn't exist.
@@ -49,6 +50,16 @@ If you've already installed an earlier version of desktop-eye-candy, you may use
 ```
 npm upgrade -g desktop-eye-candy
 ```
+> Note: upgrade will only update to the latest version of your currently installation major release. If you are at 3.0.0, it will not update to 4.x.  
+
+To upgrade to the very latest version...
+```
+npm uninstall -g desktop-eye-candy
+followed by
+npm install -g desktop-eye-candy
+```
+> Uninstallation does not remove the contents of ~/.desktop-eye-candy, so you configuration will be preserved.
+
 Depending upon your version, an additional step is required depending upon your version.
 
 ### [1.3.8 - 3.0.0)
