@@ -17,6 +17,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
+| 4.1.0   | Support for a generic RSS xml feed handler with help from [xml2js](https://www.npmjs.com/package/xml2js) |
 | 4.0.3   | Clarify installation step (i.e. [Semantic Versioning](https://docs.npmjs.com/getting-started/semantic-versioning)) |
 | 4.0.2   | 'Favorites' redesign (See [Providers](#providers) for more details and 'fav' action supported on API.
 | 3.3.4   | Need to pass the full directory path (including drive letter) for later windows 10 builds.
@@ -211,6 +212,13 @@ command. It's purpose is to bookmark a set of the random entries deemed 'favorit
 
 ### Flickr HiRes
 
+### RSS Feed
+This provider will accept an array of URLs that return raw [RSS](https://en.wikipedia.org/wiki/RSS) feeds in XML format. This package uses [xml2js](https://www.npmjs.com/package/xml2js) to parse the XML response into a JSON object.
+A list URLs are defined for each feed in the ~/.desktop-eye-candy/config.json file. A 'location' element provides
+the name for element holding an image URL.  
+
+The handler will search all elements of the response anywhere they exist under each RSS 'item' element. If no URL is found, the item element is dumped when [trace logging](#traceLogging) is enabled. 
+
 
 ## Configuration
 Modify the ~/.desktop-eye-candy/config.json file
@@ -220,9 +228,9 @@ Modify the ~/.desktop-eye-candy/config.json file
 * Change the provider's 'enabled' key value from false to true.
 
 
-# Troubleshooting
+# Troubleshooting 
 
-## Node JS logging
+## Node JS logging <a id="traceLogging"></a>
 Node.js trace logging is available via NODE_DEBUG env variable.
 
 ### Linux
