@@ -12,12 +12,15 @@ The following providers are supported:
 * Pixabay image search
 * Flickr (low-res requires no api key)
 * Flickr hi-res
-* Local json file of 'favorites' (See /installPath/favorites/items.json)
+* Local json file of favorites' (See ~/desktop-eye-candy/favorites.json)
+* Local directory handler
+* Generic RSS feed handler
+
 
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 4.2.0   | Improved randomizer to be equally fair across set of handlers
+| 4.2.1   | Improved randomizer to be equally fair across set of handlers
 | 4.1.0   | Support for a generic RSS xml feed handler with help from [xml2js](https://www.npmjs.com/package/xml2js) |
 | 4.0.3   | Clarify installation step (i.e. [Semantic Versioning](https://docs.npmjs.com/getting-started/semantic-versioning)) |
 | 4.0.2   | 'Favorites' redesign (See [Providers](#providers) for more details and 'fav' action supported on API.
@@ -62,7 +65,7 @@ npm install -g desktop-eye-candy
 ```
 > Uninstallation does not remove the contents of ~/.desktop-eye-candy, so you configuration will be preserved.
 
-Depending upon your version, an additional step is required depending upon your version.
+Depending upon your version, an additional step is required.
 
 ### [1.3.8 - 3.0.0)
 
@@ -137,7 +140,7 @@ The following platforms have been tested thus far.
 | Ubuntu 14.04  | None   |
 | Ubuntu 16.04  | After installation and configuration, logout and log back in if using keyboard shortcut.|
 | Ubuntu 17.10  | None   |
-| Windows 10 Home Edition (1709)   | Powershell must be in the path. |
+| Windows 10 Home Edition (1709)   | None|
 
 
 ## Dependencies
@@ -150,7 +153,7 @@ $ sudo apt-get install nitrogen
 * nitrogen - set the desktop background to the downloaded image
 
 ### Windows
-* Powershell must be in the Path
+* Powershell
 
 ## Node.js
 Install Node.js
@@ -196,7 +199,7 @@ This section provides more information regarding the delivered set of image prov
 Desktop-eye-candy randomly selects images from several sources. Each source is described as a  'provider'. The rest of this section describes information for each of the available providers.
 
 ### Local File System Provider
-This was originally described as a 'favorites' provider feature; however, it is now renamed as the 'Local file system provider'. This provider contains a list of local
+This was originally described as a 'favorites' provider feature before 4.0.x; however, it is now renamed as the 'Local file system provider'. This provider contains a list of local
 directory paths containing image files. By default, there always exists one implicitly defined directory path to ~/.desktop-eye-candy/images
 
 ### Favorites Provider
@@ -214,11 +217,11 @@ command. It's purpose is to bookmark a set of the random entries deemed 'favorit
 ### Flickr HiRes
 
 ### RSS Feed
-This provider will accept an array of URLs that return raw [RSS](https://en.wikipedia.org/wiki/RSS) feeds in XML format. This package uses [xml2js](https://www.npmjs.com/package/xml2js) to parse the XML response into a JSON object.
+This provider will accept an array of URLs that return raw [RSS](https://en.wikipedia.org/wiki/RSS) feeds in XML format. desktop-eye-candy uses [xml2js](https://www.npmjs.com/package/xml2js) to parse the XML response into a JSON object.
 A list URLs are defined for each feed in the ~/.desktop-eye-candy/config.json file. A 'location' element provides
 the name for element holding an image URL.  
 
-The handler will search all elements of the response anywhere they exist under each RSS 'item' element. If no URL is found, the item element is dumped when [trace logging](#traceLogging) is enabled. 
+The handler will search all elements of the response anywhere they exist under each RSS 'item' element looking for a 'location' name match. If no URL is found, the item element is dumped when [trace logging](#traceLogging) is enabled. 
 
 
 ## Configuration
@@ -317,14 +320,17 @@ wallpaper.js acts as a controller for a set of handlers (e.g. bing, pixabay, goo
 Use one of the existing handlers as a guide. Be sure to export an 'exec' function in the new handler's module that returns a Promise.
 
 ### Step 2: add handler to wallpaper.js
-Add the handler to the list of promises defined in wallpaper.js. 
+Add the handler to the list of promises defined in wallpaper-controller.js. 
 ```js
     var entry = null;
-    let promises = [                 
-        bing.createFeed(),    
-        googs.createFeed(),
-        pixabay.createFeed(),           
-        flicker.createFeed(),            
+    let theHandlers = [];
+    if ( config.providers.favorites.enabled) theHandlers.push(favorites);
+    if ( config.providers.localFS.enabled) theHandlers.push(localFS);
+    if ( config.providers.bing.enabled) theHandlers.push(bing);
+    if ( config.providers.google.enabled) theHandlers.push(googs);        
+    .
+    .
+    .
         // new handler goes here...
     ];
 ```
