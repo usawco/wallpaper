@@ -20,6 +20,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
+| 4.3.1   | Bugfix localFS handler ( switch file copy method to something more reliable for windows) |
 | 4.3.0   | socket timeout added to configuration |
 | 4.2.1   | Improved randomizer to be equally fair across set of handlers
 | 4.1.0   | Support for a generic RSS xml feed handler with help from [xml2js](https://www.npmjs.com/package/xml2js) |
