@@ -1,5 +1,5 @@
 
-![alt text](doc/images/sample-screenshot0.png "desktop-eye-candy")
+![desktop-eye-candy](doc/images/sample-screenshot0.png "desktop-eye-candy")
 
 A program for setting randomized background wallpapers in a Linux or Windows desktop.
 
@@ -20,6 +20,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
+| 4.4.0   | Enhaned RSS feed handler. ( See  [RSS handler](#rss) for more details.)
 | 4.3.2   | Bugfix localFS handler ( switch file copy method to something more reliable for windows) |
 | 4.3.0   | socket timeout added to configuration |
 | 4.2.1   | Improved randomizer to be equally fair across set of handlers
@@ -218,13 +219,18 @@ command. It's purpose is to bookmark a set of the random entries deemed 'favorit
 
 ### Flickr HiRes
 
-### RSS Feed
+### RSS Feed <a id="rss"></a>
+
+![Astronomy Picture of the Day](doc/images/sample-screenshot3.png "Astronomy Picture of the Day")
+
 This provider will accept an array of URLs that return raw [RSS](https://en.wikipedia.org/wiki/RSS) feeds in XML format. desktop-eye-candy uses [xml2js](https://www.npmjs.com/package/xml2js) to parse the XML response into a JSON object.
-A list URLs are defined for each feed in the ~/.desktop-eye-candy/config.json file. A 'location' element provides
-the name for element holding an image URL.  
 
-The handler will search all elements of the response anywhere they exist under each RSS 'item' element looking for a 'location' name match. If no URL is found, the item element is dumped when [trace logging](#traceLogging) is enabled. 
+Two approaches are used to gather images based upon how the handler is configured.
 
+If a 'location' is provided, the handler will search all elements of the RSS response anywhere they exist under each 'item' element looking for a 'location' name match. If no URL is found, the item element is dumped when [trace logging](#traceLogging) is enabled. 
+
+
+If 'searchLinks' is true, each HTML response to the URL defined in each item's 'link' element is examined looking for <IMG> tags. 
 
 ## Configuration
 Modify the ~/.desktop-eye-candy/config.json file
@@ -291,7 +297,8 @@ Add this program to a keyboard shortcut for maximum ease of use.
 
 I suggest using gnome-terminal for the terminal popup, so you can monitor its progress since some images may take a few seconds to download.
 
-![alt text](doc/images/sample-screenshot1.png "gnome-terminal")
+
+![gnome-terminal](doc/images/sample-screenshot1.png "gnome-terminal")
 
 e.g. I've created a bash profile called 'login' in the example below that sets the custom green foreground color.
 
@@ -304,7 +311,7 @@ $ gnome-terminal --window-with-profile=login -e /home/user/desktop-eye-candy.sh
 NODE_DEBUG=wallpaper wallpaper exec 
 ```
 
-![alt text](doc/images/sample-screenshot2.png "keyboard shortcut")
+![keyboard shortcut](doc/images/sample-screenshot2.png "keyboard shortcut")
 
 
 ## Windows
