@@ -20,7 +20,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 4.4.2   | Enhanced RSS feed handler. ( See  [RSS handler](#rss) for more details.)
+| 4.4.3   | Enhanced RSS feed handler. ( See  [RSS handler](#rss) for more details.)
 | 4.3.2   | Bugfix localFS handler ( switch file copy method to something more reliable for windows) |
 | 4.3.0   | socket timeout added to configuration |
 | 4.2.1   | Improved randomizer to be equally fair across set of handlers
