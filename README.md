@@ -20,7 +20,7 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
-| 4.4.1   | Enhaned RSS feed handler. ( See  [RSS handler](#rss) for more details.)
+| 4.4.2   | Enhanced RSS feed handler. ( See  [RSS handler](#rss) for more details.)
 | 4.3.2   | Bugfix localFS handler ( switch file copy method to something more reliable for windows) |
 | 4.3.0   | socket timeout added to configuration |
 | 4.2.1   | Improved randomizer to be equally fair across set of handlers
@@ -230,7 +230,7 @@ Two approaches are used to gather images based upon how the handler is configure
 If a 'location' is provided, the handler will search all elements of the RSS response anywhere they exist under each 'item' element looking for a 'location' name match. If no URL is found, the item element is dumped when [trace logging](#traceLogging) is enabled. 
 
 
-If 'searchLinks' is true, each HTML response to the URL defined in each item's 'link' element is examined looking for <IMG> tags. 
+If 'searchLinks' is true, each HTML response to the URL defined in each item's 'link' element is examined looking for '<IMG>' tags. 
 
 ## Configuration
 Modify the ~/.desktop-eye-candy/config.json file
