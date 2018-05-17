@@ -20,8 +20,9 @@ The following providers are supported:
 # Revision history
 | when          | what   |
 | ------------- | :------|
+| 4.4.4   | Bugfix, wait for promise resolution on download redirects. Added more trace logging |
 | 4.4.3   | Enhanced RSS feed handler. ( See  [RSS handler](#rss) for more details.)
-| 4.3.2   | Bugfix localFS handler ( switch file copy method to something more reliable for windows) |
+| 4.3.2   | Bugfix, localFS handler ( switch file copy method to something more reliable for windows) |
 | 4.3.0   | socket timeout added to configuration |
 | 4.2.1   | Improved randomizer to be equally fair across set of handlers
 | 4.1.0   | Support for a generic RSS xml feed handler with help from [xml2js](https://www.npmjs.com/package/xml2js) |
@@ -36,7 +37,7 @@ The following providers are supported:
 | 3.0.4    | Significant update to support upcoming GUI, image urls with 301 redirects now supported, improved error messages |
 | 2.0.10   | Switched to node.js http module
 | 2.0.8   | Windows support (Requires Powershell)|
-| 1.3.12  | Bugfix when install creates initial config.json
+| 1.3.12  | Bugfix, when install creates initial config.json
 | 1.3.11  | An existing configuration is no longer overwritten. config.json moves to ~/.desktop-eye-candy/config.json | 
 | 1.2.3  | A 'favorites' provider introduced, source code cleanup (eslint) |
 | 1.1.3  | Update README for 17.10 support |
