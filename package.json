@@ -64,7 +64,7 @@
     "lint": "eslint --config .eslintrc.json --ignore-path .eslintignore test lib",
     "postinstall": "node scripts/post-install.js"
   },
-  "version": "4.4.5",
+  "version": "4.4.6",
   "dependencies": {
     "commander": "^2.15.0",
     "jimp": "^0.2.28",
